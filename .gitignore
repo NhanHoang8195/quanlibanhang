@@ -1,2 +1,3 @@
-QuanLiBanHang/.settings/org.eclipse.wst.common.project.facet.core.xml
-QuanLiBanHang/target/
+*/.settings/org.eclipse.wst.common.project.facet.core.xml
+*/target/
+/.vs
