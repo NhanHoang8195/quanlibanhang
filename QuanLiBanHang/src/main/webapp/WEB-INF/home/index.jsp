@@ -20,39 +20,39 @@
 						<div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
 							<div class="shop-holder">
 		                         <div class="product-img">
-		                            <a href="single.html">
+		                            <a href="/food/0">
 		                                <img width="225" height="265" src="images/pic1.jpg" class="img-responsive"  alt="item4">		                            </a>
 		                            <a href="" class="button item_add"></a>		                         </div>
 		                    </div>
 		                    <div class="shop-content" style="height: 80px;">
-		                            <div><a href="single.html" rel="tag">humour</a></div>
-		                            <h3><a href="single.html">Non-charac</a></h3>
+		                            <div><a href="/food/0" rel="tag">humour</a></div>
+		                            <h3><a href="/food/0">Non-charac</a></h3>
 		                            <span class="amount item_price">$45.00</span>
 		                    </div>
 						</div>
 						<div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
 							<div class="shop-holder">
 		                         <div class="product-img">
-		                            <a href="single.html">
+		                            <a href="/food/0">
 		                                <img width="225" height="265" src="images/pic2.jpg" class="img-responsive"  alt="item4">		                            </a>
 		                            <a href="" class="button item_add"></a>		                         </div>
 		                    </div>
 		                    <div class="shop-content" style="height: 80px;">
-		                            <div><a href="single.html" rel="tag">humour</a></div>
-		                            <h3><a href="single.html">Non-charac</a></h3>
+		                            <div><a href="/food/0" rel="tag">humour</a></div>
+		                            <h3><a href="/food/0">Non-charac</a></h3>
 		                            <span class="amount item_price">$45.00</span>
 		                    </div>
 						</div>
 						<div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
 							<div class="shop-holder">
 		                         <div class="product-img">
-		                            <a href="single.html">
+		                            <a href="/food/0">
 		                                <img width="225" height="265" src="images/pic3.jpg" class="img-responsive"  alt="item4">		                            </a>
 		                           <a href="" class="button item_add"></a>	                         </div>
 		                    </div>
 		                    <div class="shop-content" style="height: 80px;">
-		                            <div><a href="single.html" rel="tag">humour</a></div>
-		                            <h3><a href="single.html">Non-charac</a></h3>
+		                            <div><a href="/food/0" rel="tag">humour</a></div>
+		                            <h3><a href="/food/0">Non-charac</a></h3>
 		                            <span class="amount item_price">$45.00</span>
 		                    </div>
 						</div>
@@ -76,7 +76,7 @@
 <div class="container">
 	<h2 class="m_3">From the Blog</h2>
 	<div class="grid_1">
-		<div class="col-md-6 blog_1"><a href="index_single.html">
+		<div class="col-md-6 blog_1"><a href="index_/food/0">
 			<div class="item-inner"> 
 				<img src="images/pic7.jpg" class="img-responsive" alt=""/>																	
 					<div class="date-comments">
@@ -88,7 +88,7 @@
 					 </div>
 			</div>   
 		</a></div>
-		<div class="col-md-6 row_2"><a href="index_single.html">
+		<div class="col-md-6 row_2"><a href="index_/food/0">
 			<div class="item-inner"> 
 				<img src="images/pic8.jpg" class="img-responsive" alt=""/>																	
 					<div class="date-comments">
@@ -110,28 +110,28 @@
 		<div class="row_5">
 						<div class="col_1_of_3 span_1_of_3">
 							<div class="shop-holder1">
-		                        <a href="single.html"><img src="images/pic4.jpg" class="img-responsive" alt=""/></a>
+		                        <a href="/food/0"><img src="images/pic4.jpg" class="img-responsive" alt=""/></a>
 		                    </div>
 		                    <div class="shop-content" style="height: 80px;">
-		                            <h3><a href="single.html">Non-charac</a></h3>
+		                            <h3><a href="/food/0">Non-charac</a></h3>
 		                            <span><span class="amount">$45.00</span></span>
 		                    </div>
 						</div>
 						<div class="col_1_of_3 span_1_of_3">
 							<div class="shop-holder1">
-		                        <a href="single.html"><img src="images/pic5.jpg" class="img-responsive" alt=""/></a>
+		                        <a href="/food/0"><img src="images/pic5.jpg" class="img-responsive" alt=""/></a>
 		                    </div>
 		                    <div class="shop-content" style="height: 80px;">
-		                            <h3><a href="single.html">Non-charac</a></h3>
+		                            <h3><a href="/food/0">Non-charac</a></h3>
 		                            <span><span class="amount">$45.00</span></span>
 		                    </div>
 						</div>
 						<div class="col_1_of_3 span_1_of_3">
 							<div class="shop-holder1">
-		                        <a href="single.html"><img src="images/pic6.jpg" class="img-responsive" alt=""/></a>
+		                        <a href="/food/0"><img src="images/pic6.jpg" class="img-responsive" alt=""/></a>
 		                    </div>
 		                    <div class="shop-content" style="height: 80px;">
-		                            <h3><a href="single.html">Non-charac</a></h3>
+		                            <h3><a href="/food/0">Non-charac</a></h3>
 		                            <span><span class="amount">$45.00</span></span>
 		                    </div>
 						</div>

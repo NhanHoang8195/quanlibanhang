@@ -144,7 +144,7 @@
 	    <div class="col-xs-4 header-bottom-right">
 	       <div class="box_1-cart">
 		     <div class="box_11"><a href="checkout.html">
-		      <h4><p>Cart: <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</p><img src="images/bag.png" alt=""/><div class="clearfix"> </div></h4>
+		      <h4><p>Cart: <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</p><img src="/images/bag.png" alt=""/><div class="clearfix"> </div></h4>
 		      </a></div>
 	          <p class="empty"><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 	          <div class="clearfix"> </div>
