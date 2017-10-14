@@ -13,3 +13,4 @@ Phạm Ngọc Hải  - 1412149 - 0967724133- pnhai.vn@gmail.com
 Lưu ý: Project được tạo bằng Spring Boot (mọi người import maven nhé). Vì dùng STS đã có sẵn tomcat nên k cần cài thêm
 khi build project chỉ cần Run As -> Spring Boot App.
 Phần trên chỉ là recommend, mọi người có thể dùng bất cứ thứ gì miễn chạy được là ok.
+
