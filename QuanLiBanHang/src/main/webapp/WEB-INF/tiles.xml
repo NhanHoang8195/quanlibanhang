@@ -31,4 +31,17 @@
 		<put-attribute name="content" value="/WEB-INF/food/details.jsp" />
 	</definition>
 	
+	<definition name="branch.index" extends="shared.layout">
+		<put-attribute name="content" value="/WEB-INF/branch/index.jsp" />
+	</definition>
+	<definition name="branch.details" extends="shared.layout">
+		<put-attribute name="content" value="/WEB-INF/branch/details.jsp" />
+	</definition>
+	
+	<definition name="order.index" extends="shared.layout">
+		<put-attribute name="content" value="/WEB-INF/order/index.jsp" />
+	</definition>
+	<definition name="order.details" extends="shared.layout">
+		<put-attribute name="content" value="/WEB-INF/order/details.jsp" />
+	</definition>
 </tiles-definitions>
