@@ -9,7 +9,7 @@
          </div>
          <div class="cssmenu">
 			<ul>
-			    <li class="active"><a href="login.html">My Account</a></li> 
+			    <li class="active"><a href="/account/login">My Account</a></li> 
 			</ul>
 		 </div>
 	</div>
@@ -20,7 +20,7 @@
 	    <div class="container">
 			<div class="col-xs-8 header-bottom-left">
 				<div class="col-xs-2 logo">
-					<h1><a href="index.html"><span>Buy</span>shop</a></h1>
+					<h1><a href="/"><span>Buy</span>shop</a></h1>
 				</div>
 				<div class="col-xs-6 menu">
 		            <ul class="megamenu skyblue">

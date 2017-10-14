@@ -17,5 +17,12 @@
 	<definition name="home.about" extends="shared.layout">
 		<put-attribute name="content" value="/WEB-INF/home/about.jsp" />
 	</definition>
-
+	
+	<definition name="account.login" extends="shared.layout">
+		<put-attribute name="content" value="/WEB-INF/account/login.jsp" />
+	</definition>
+	
+	<definition name="account.register" extends="shared.layout">
+		<put-attribute name="content" value="/WEB-INF/account/register.jsp" />
+	</definition>
 </tiles-definitions>
