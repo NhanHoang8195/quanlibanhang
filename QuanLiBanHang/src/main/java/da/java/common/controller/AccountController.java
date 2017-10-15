@@ -12,11 +12,11 @@ public class AccountController {
 
 	@GetMapping("/login")
     public String login(Model model) {
-        return "account.login";
+        return "account/login";
     }
 	
 	@GetMapping("/register")
     public String register(Model model) {
-        return "account.register";
+        return "account/register";
     }
 }

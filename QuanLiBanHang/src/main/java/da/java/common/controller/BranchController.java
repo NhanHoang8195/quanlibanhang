@@ -12,11 +12,11 @@ public class BranchController {
 	
 	@GetMapping("/")
     public String index(Model model) {
-        return "branch.index";
+        return "branch/index";
     }
 	
 	@GetMapping("/{id}")
     public String details(@PathVariable int id, Model model) {
-        return "branch.details";
+        return "branch/details";
     }
 }

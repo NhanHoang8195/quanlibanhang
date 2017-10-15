@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="shared/layout :: head"></head>
+<body>
+<div th:replace="shared/header :: header"></div>
+
 <div class="single_top">
 	 <div class="container"> 
 	    <div class="register">
@@ -7,14 +13,14 @@
 				<form>
 				  <div>
 					<span>Email Address<label>*</label></span>
-					<input type="text"> 
+					<input type="text" /> 
 				  </div>
 				  <div>
 					<span>Password<label>*</label></span>
-					<input type="text"> 
+					<input type="text" /> 
 				  </div>
 				  <a class="forgot" href="#">Forgot Your Password?</a>
-				  <input type="submit" value="Login">
+				  <input type="submit" value="Login" />
 			    </form>
 			   </div>
 			    <div class="col-md-6 login-left">
@@ -26,3 +32,7 @@
 		</div>
      </div>
 </div>  
+
+<div th:replace="shared/footer :: footer"></div>
+</body>
+</html>

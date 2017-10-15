@@ -15,11 +15,11 @@ public class FoodController {
 	
 	@GetMapping("/")
     public String index(Model model) {
-        return "food.index";
+        return "food/index";
     }
 	
 	@GetMapping("/{id}")
     public String details(@PathVariable int id, Model model) {
-        return "food.details";
+        return "food/details";
     }
 }

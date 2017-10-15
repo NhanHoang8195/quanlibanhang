@@ -12,11 +12,11 @@ public class OrderController {
 	
 	@GetMapping("/")
     public String index(Model model) {
-        return "order.index";
+        return "order/index";
     }
 	
 	@GetMapping("/{id}")
     public String details(@PathVariable int id, Model model) {
-        return "order.details";
+        return "order/details";
     }
 }
