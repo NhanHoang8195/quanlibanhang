@@ -15,8 +15,13 @@ import javax.persistence.Table;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 @Entity
 @Table(name = "food")
+@JsonInclude(value = Include.NON_NULL)
 public class Food implements Serializable {
 
     /**
@@ -31,20 +36,25 @@ public class Food implements Serializable {
     private Long foodId;
     
     /** Name of the food*/
-    @Column(name = "food_name", nullable = false)
+    @Column(name = "food_name", nullable = false, unique = true)
     private String foodName;
 
     /** Price of the food*/
     @Column(name = "price", nullable = false)
     private Long price;
     
+    /** Image of the food*/
+    @Column(name = "image")
+    private String image;
+    
     /** Many To Many relationship with product_order table*/
-    @ManyToMany(mappedBy = "foods", cascade = CascadeType.ALL)
+    @JsonIgnore
+    @ManyToMany(cascade=CascadeType.MERGE, mappedBy = "foods")
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Order> orders;
 
     public Long getFoodId() {
-        return foodId;
+        return this.foodId;
     }
 
     public void setFoodId(Long foodId) {
@@ -74,12 +84,21 @@ public class Food implements Serializable {
     public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
+    
+    public String getImage() {
+        return image;
+    }
 
-    public Food(Long foodId, String foodName, Long price, List<Order> orders) {
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Food(Long foodId, String foodName, Long price, String image, List<Order> orders) {
         super();
         this.foodId = foodId;
         this.foodName = foodName;
         this.price = price;
+        this.image = image;
         this.orders = orders;
     }
 

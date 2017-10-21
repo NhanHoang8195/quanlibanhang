@@ -3,8 +3,11 @@ package da.java.common.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,8 +16,17 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+import da.java.common.enums.OrderStatus;
+
 @Entity
 @Table(name = "product_order")
+@JsonInclude(value = Include.NON_NULL)
 public class Order implements Serializable {
 
     /**
@@ -29,18 +41,24 @@ public class Order implements Serializable {
     private Long productOrderId;
     
     /** Phone number of an customer will receive product*/
-    @Column(name = "phone")
+    @Column(name = "phone", nullable = false)
     private String phone;
     
     /** Address for receive product*/
-    @Column(name = "address")
+    @Column(name = "address", nullable = false)
     private String address;
     
+    /**Status orders*/
+    @Column(name = "order_status")
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
     /** List Id of foods*/
-    @ManyToMany
+    
+    @ManyToMany(cascade = {CascadeType.MERGE})
     @JoinTable(  name = "product_order_food", 
-                joinColumns = @JoinColumn(name = "product_order_id"),
-                inverseJoinColumns = @JoinColumn(name = "food_id"))
+    joinColumns = @JoinColumn(name = "product_order_id"),
+    inverseJoinColumns = @JoinColumn(name = "food_id"))
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Food> foods;
 
     public Long getProductOrderId() {
@@ -74,12 +92,21 @@ public class Order implements Serializable {
     public void setFoods(List<Food> foods) {
         this.foods = foods;
     }
+    
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
 
-    public Order(Long productOrderId, String phone, String address, List<Food> foods) {
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public Order(Long productOrderId, String phone, String address, OrderStatus orderStatus, List<Food> foods) {
         super();
         this.productOrderId = productOrderId;
         this.phone = phone;
         this.address = address;
+        this.orderStatus = orderStatus;
         this.foods = foods;
     }
 
