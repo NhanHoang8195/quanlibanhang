@@ -389,6 +389,9 @@ h2.m_3 {
 .span_1_of_3 {
   width:32.2%;
 }
+.span_1_of_5 {
+  width:18%;
+}
 .col_1_of_3 {
   display: block;
   float: left;
