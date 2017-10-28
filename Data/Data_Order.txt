@@ -1,0 +1,200 @@
+﻿{
+	"productOrderId": "222",
+	"phone": "0968005379",
+	"address": "Truong DHKHTN Nguyen Van Cu",
+	"foods":
+		{
+			"foodId": 2,
+			"foodName": "Cơm gà",
+			"price": 25000,
+			
+
+		},
+		{
+			"foodId": 3,
+			"foodName": "Cơm bò xào",
+			"price": 35000,
+			
+
+		}	
+},
+{
+	"productOrderId": "333",
+	"phone": "0999777666",
+	"address": "100 Hùng Vương, quận 10, TPHCM",
+	"foods":
+		{
+			"foodId": 3,
+			"foodName": "Cơm bò xào",
+			"price": 35000,
+			
+
+		},
+		{
+			"foodId": 4,
+			"foodName": "Mì sốt bò",
+			"price": 30000,
+			
+
+		}
+},
+{
+	"productOrderId": "444",
+	"phone": "0999888555",
+	"address": "175 Tạ Quang Bửu quận 8, TPHCM",
+	"foods":
+		{
+			"foodId": 5,
+			"foodName": "Mì gà quay",
+			"price": 50000,
+			
+
+		},
+		{
+			"foodId": 6,
+			"foodName": "Mì ốc Hến",
+			"price": 35000,
+			
+
+		}	
+},
+{
+	"productOrderId": "555",
+	"phone": "0968686868",
+	"address": "510 Lý Thái Tổ, Quận 10, TPHCM",
+	"foods":
+		{
+			"foodId": 7,
+			"foodName": "Pizza",
+			"price": 75000,
+			
+
+		},
+		{
+			"foodId": 8,
+			"foodName": "Cháo Ếch",
+			"price": 25000,
+			
+
+		}	
+},
+{
+	"productOrderId": "666",
+	"phone": "0923232323",
+	"address": "606/33 Đường 3/2 Quận 10, TPHCM",
+	"foods":
+		{
+			"foodId": 9,
+			"foodName": "Bánh Pie nhân khoai môn"
+			"price": 25000,
+			
+
+		},
+		{
+			"foodId": 10,
+			"foodName": "String"
+			"price": 10000,
+			
+
+		}	
+},
+{
+	"productOrderId": "777",
+	"phone": "0912121212",
+	"address": "54 Lý Thường Kiệt, Quận 10, TPHCM",
+	"foods":
+		{
+			"foodId": 8,
+			"foodName": "Cháo Ếch",
+			"price": 25000,
+			
+
+		},
+		{
+			"foodId": 9,
+			"foodName": "Bánh Pie nhân khoai môn"
+			"price": 25000,
+			
+
+		}	
+},
+{
+	"productOrderId": "888",
+	"phone": "0937373737",
+	"address": "43 Trần Phú, Quận 5, TPHCM",
+	"foods":
+		{
+			"foodId": 6,
+			"foodName": "Mì ốc Hến",
+			"price": 35000,
+			
+
+		},
+		{
+			"foodId": 7,
+			"foodName": "Pizza",
+			"price": 75000,
+			
+
+		}	
+},
+{
+	"productOrderId": "999",
+	"phone": "0978787878",
+	"address": "210 Sư Vạn Hạnh, Quận 10, TPHCM",
+	"foods":
+		{
+			"foodId": 4,
+			"foodName": "Mì sốt bò",
+			"price": 30000,
+			
+
+		},
+		{
+			"foodId": 5,
+			"foodName": "Mì gà quay",
+			"price": 50000,
+			
+
+		}	
+},
+{
+	"productOrderId": "212",
+	"phone": "0931313131",
+	"address": "105 Hai Bà Trưng, Quận 1, TPHCM",
+	"foods":
+		{
+			"foodId": 4,
+			"foodName": "Mì sốt bò",
+			"price": 30000,
+			
+
+		},
+		{
+			"foodId": 5,
+			"foodName": "Mì gà quay",
+			"price": 50000,
+			
+
+		}	
+},
+{
+	"productOrderId": "404",
+	"phone": "0931121996",
+	"address": "31 Thành Thái, Quận 10, TPHCM",
+	"foods":
+		{
+			"foodId": 4,
+			"foodName": "Mì sốt bò",
+			"price": 30000,
+			
+
+		},
+		{
+			"foodId": 5,
+			"foodName": "Mì gà quay",
+			"price": 50000,
+			
+
+		}	
+}
