@@ -24,6 +24,10 @@ public class Branch implements Serializable {
     @Column(name = "branch_id")
     private Long branchId;
     
+    /** Name of a branch*/
+    @Column(name = "name")
+    private String name;
+    
     /** Phone of a branch*/
     @Column(name = "phone")
     private String phone;
@@ -55,8 +59,17 @@ public class Branch implements Serializable {
     public String getAddress() {
         return address;
     }
+    
+    
+    public String getName() {
+		return name;
+	}
 
-    public void setAddress(String address) {
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setAddress(String address) {
         this.address = address;
     }
 
@@ -68,16 +81,38 @@ public class Branch implements Serializable {
         this.image = image;
     }
 
-    public Branch(Long branchId, String phone, String address, String image) {
+    public Branch(Long branchId, String name, String phone, String address, String image) {
         super();
         this.branchId = branchId;
+        this.name = name;
         this.phone = phone;
         this.address = address;
         this.image = image;
     }
-
+    
+    public Branch(String name, String phone, String address, String image) {
+        super();
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+        this.image = image;
+    }
+    
     public Branch() {
         super();
+    }
+    
+    @Override
+    public boolean equals(Object object)
+    {
+        boolean sameSame = false;
+
+        if (object != null && object instanceof Branch)
+        {
+            sameSame = this.name.equals(((Branch) object).name);
+        }
+
+        return sameSame;
     }
     
 }
