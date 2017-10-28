@@ -1,0 +1,70 @@
+﻿{
+	"foodId": 2,
+	"foodName": "Cơm gà",
+	"price": 25000,
+	
+
+},
+{
+	"foodId": 3,
+	"foodName": "Cơm bò xào",
+	"price": 35000,
+	
+
+},
+{
+	"foodId": 4,
+	"foodName": "Mì sốt bò",
+	"price": 30000,
+	
+
+},
+{
+	"foodId": 5,
+	"foodName": "Mì gà quay",
+	"price": 50000,
+	
+
+},
+{
+	"foodId": 6,
+	"foodName": "Mì ốc Hến",
+	"price": 35000,
+	
+
+},
+{
+	"foodId": 7,
+	"foodName": "Pizza",
+	"price": 75000,
+	
+
+},
+{
+	"foodId": 8,
+	"foodName": "Cháo Ếch",
+	"price": 25000,
+	
+
+},
+{
+	"foodId": 9,
+	"foodName": "Bánh Pie nhân khoai môn"
+	"price": 25000,
+	
+
+},
+{
+	"foodId": 10,
+	"foodName": "String"
+	"price": 10000,
+	
+
+},
+{
+	"foodId": 11,
+	"foodName": "Hamberger"
+	"price": 65000,
+	
+
+}
