@@ -101,8 +101,28 @@ public class Food implements Serializable {
         this.image = image;
         this.orders = orders;
     }
+    
+    public Food(String foodName, Long price, String image) {
+        super();
+        this.foodName = foodName;
+        this.price = price;
+        this.image = image;
+    }
 
     public Food() {
         super();
+    }
+    
+    @Override
+    public boolean equals(Object object)
+    {
+        boolean sameSame = false;
+
+        if (object != null && object instanceof Food)
+        {
+            sameSame = this.foodName.equals(((Food) object).foodName);
+        }
+
+        return sameSame;
     }
 }
