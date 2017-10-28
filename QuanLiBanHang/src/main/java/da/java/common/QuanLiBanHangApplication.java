@@ -15,7 +15,9 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.transaction.annotation.Transactional;
 
+import da.java.common.entities.Branch;
 import da.java.common.entities.Food;
+import da.java.common.repository.BranchRepository;
 import da.java.common.repository.FoodRepository;
 
 @SpringBootApplication
@@ -51,6 +53,7 @@ public class QuanLiBanHangApplication implements CommandLineRunner{
 	@Override
     public void run(String... arg0) throws Exception {
 		initDataForFoodTable();
+		initDataForBranchTable();
     }
 	
 	@Autowired
@@ -97,5 +100,39 @@ public class QuanLiBanHangApplication implements CommandLineRunner{
 		 }
 	}
 	 
-	 
+	 @Autowired
+    BranchRepository branchRepository;
+	 @Transactional
+	 public void initDataForBranchTable()
+	 {
+		 List<Branch> branchs = branchRepository.findAll();
+		 
+		 // https://www.foody.vn/ha-noi/la-salsa-bui-thi-xuan/goi-mon
+		 Branch branch1 = new Branch("La Salsa","09670324001", "5 Bùi Thị Xuân, Quận Hai Bà Trưng", "https://media.foody.vn/res/g14/136680/prof/s480x300/foody-mobile-la-salsa1-jpg-316-635675632346110249.jpg");
+		 if(!branchs.contains(branch1))
+		 {
+			 branchRepository.save(branch1);
+		 }
+		 
+		 // https://www.foody.vn/ha-noi/nam-son-cuisine-tiec-cuoi-hoi-nghi?isnulldeli=1
+		 Branch branch2 = new Branch("Nam Sơn Cuisine","09670324002", "809 Giải Phóng, Quận Hoàng Mai", "https://media.foody.vn/res/g2/15429/prof/s640x400/foody-mobile-nam-son-jpg-390-635786845267621697.jpg");
+		 if(!branchs.contains(branch2))
+		 {
+			 branchRepository.save(branch2);
+		 }
+		 
+		 // https://www.foody.vn/ha-noi/goc-quan-am-thuc-viet
+		 Branch branch3 = new Branch("Gộc Quán","09670324003", "6B Đường Thành,  Quận Hoàn Kiếm", "https://media.foody.vn/res/g10/94782/prof/s640x400/foody-mobile-moc-jpg-271-635814523748648630.jpg");
+		 if(!branchs.contains(branch3))
+		 {
+			 branchRepository.save(branch3);
+		 }
+		 
+		// https://www.foody.vn/ha-noi/nam-son-cuisine-tiec-cuoi-hoi-nghi?isnulldeli=1
+		 Branch branch4 = new Branch("Khazaana 1992","09670324004", "34 Đường Thành,  Quận Hoàn Kiếm", "https://media.foody.vn/res/g11/103383/prof/s640x400/foody-mobile-4-jpg-168-636341545102663516.jpg");
+		 if(!branchs.contains(branch4))
+		 {
+			 branchRepository.save(branch4);
+		 }
+	 }
 }
