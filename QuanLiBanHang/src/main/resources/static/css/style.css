@@ -641,7 +641,7 @@ h3.m_1{
 /*--footer--*/
 .footer {
   border-top: 1px solid rgb(236, 236, 236);
-  padding-top: 4em;
+  padding-top: 1em;
 }
 .box_3 h3{
 	color: #515151;
@@ -729,7 +729,7 @@ ul.footer_social li a i:hover{
 	  padding:2em 0;
 }
 .footer_top {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 /*--men--*/
 /* start women */
@@ -2815,7 +2815,7 @@ ul.list {
   padding: 2px 5px;
 }
 .footer_bottom {
-  padding: 1em 0;
+  padding: 0.5em 0;
 }
 p.empty {
   font-size: 12px;
