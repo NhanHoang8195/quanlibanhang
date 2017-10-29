@@ -4,18 +4,10 @@
 	"address": "Truong DHKHTN Nguyen Van Cu",
 	"foods":
 		{
-			"foodId": 2,
-			"foodName": "Cơm gà",
-			"price": 25000,
-			
-
+			"foodId": 2
 		},
 		{
-			"foodId": 3,
-			"foodName": "Cơm bò xào",
-			"price": 35000,
-			
-
+			"foodId": 3
 		}	
 },
 {
@@ -24,18 +16,11 @@
 	"address": "100 Hùng Vương, quận 10, TPHCM",
 	"foods":
 		{
-			"foodId": 3,
-			"foodName": "Cơm bò xào",
-			"price": 35000,
-			
+			"foodId": 3
 
 		},
 		{
-			"foodId": 4,
-			"foodName": "Mì sốt bò",
-			"price": 30000,
-			
-
+			"foodId": 4
 		}
 },
 {
@@ -44,18 +29,10 @@
 	"address": "175 Tạ Quang Bửu quận 8, TPHCM",
 	"foods":
 		{
-			"foodId": 5,
-			"foodName": "Mì gà quay",
-			"price": 50000,
-			
-
+			"foodId": 5
 		},
 		{
-			"foodId": 6,
-			"foodName": "Mì ốc Hến",
-			"price": 35000,
-			
-
+			"foodId": 6
 		}	
 },
 {
@@ -64,18 +41,11 @@
 	"address": "510 Lý Thái Tổ, Quận 10, TPHCM",
 	"foods":
 		{
-			"foodId": 7,
-			"foodName": "Pizza",
-			"price": 75000,
-			
+			"foodId": 7
 
 		},
 		{
-			"foodId": 8,
-			"foodName": "Cháo Ếch",
-			"price": 25000,
-			
-
+			"foodId": 8
 		}	
 },
 {
@@ -84,17 +54,11 @@
 	"address": "606/33 Đường 3/2 Quận 10, TPHCM",
 	"foods":
 		{
-			"foodId": 9,
-			"foodName": "Bánh Pie nhân khoai môn"
-			"price": 25000,
-			
+			"foodId": 9
 
 		},
 		{
-			"foodId": 10,
-			"foodName": "String"
-			"price": 10000,
-			
+			"foodId": 10
 
 		}	
 },
@@ -104,18 +68,11 @@
 	"address": "54 Lý Thường Kiệt, Quận 10, TPHCM",
 	"foods":
 		{
-			"foodId": 8,
-			"foodName": "Cháo Ếch",
-			"price": 25000,
-			
+			"foodId": 8
 
 		},
 		{
-			"foodId": 9,
-			"foodName": "Bánh Pie nhân khoai môn"
-			"price": 25000,
-			
-
+			"foodId": 9
 		}	
 },
 {
@@ -124,18 +81,10 @@
 	"address": "43 Trần Phú, Quận 5, TPHCM",
 	"foods":
 		{
-			"foodId": 6,
-			"foodName": "Mì ốc Hến",
-			"price": 35000,
-			
-
+			"foodId": 6
 		},
 		{
-			"foodId": 7,
-			"foodName": "Pizza",
-			"price": 75000,
-			
-
+			"foodId": 7
 		}	
 },
 {
@@ -144,18 +93,10 @@
 	"address": "210 Sư Vạn Hạnh, Quận 10, TPHCM",
 	"foods":
 		{
-			"foodId": 4,
-			"foodName": "Mì sốt bò",
-			"price": 30000,
-			
-
+			"foodId": 4
 		},
 		{
-			"foodId": 5,
-			"foodName": "Mì gà quay",
-			"price": 50000,
-			
-
+			"foodId": 5
 		}	
 },
 {
@@ -164,18 +105,10 @@
 	"address": "105 Hai Bà Trưng, Quận 1, TPHCM",
 	"foods":
 		{
-			"foodId": 4,
-			"foodName": "Mì sốt bò",
-			"price": 30000,
-			
-
+			"foodId": 4
 		},
 		{
-			"foodId": 5,
-			"foodName": "Mì gà quay",
-			"price": 50000,
-			
-
+			"foodId": 9
 		}	
 },
 {
@@ -184,17 +117,11 @@
 	"address": "31 Thành Thái, Quận 10, TPHCM",
 	"foods":
 		{
-			"foodId": 4,
-			"foodName": "Mì sốt bò",
-			"price": 30000,
-			
+			"foodId": 4
 
 		},
 		{
-			"foodId": 5,
-			"foodName": "Mì gà quay",
-			"price": 50000,
-			
+			"foodId": 6
 
 		}	
 }
