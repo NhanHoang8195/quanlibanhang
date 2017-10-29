@@ -1,17 +1,20 @@
 package da.java.common.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import da.java.common.enums.RoleName;
 
 
 @Entity
@@ -30,14 +33,13 @@ public class Role implements Serializable {
     private Long roleId;
     
     /** The role name*/
+    @JsonIgnore
+    @Enumerated(EnumType.STRING)
     @Column(name = "role_name")
-    private String roleName;
+    private RoleName roleName;
     
     /** The relationship 1:1 with account table*/
-    @JsonIgnore
-    @OneToOne(mappedBy = "roleId", cascade = CascadeType.ALL)
-    private Account account;
-
+   
     //============ GETTER-SETTER-CONSTRUCTOR=============
     
     public Long getRoleId() {
@@ -48,27 +50,19 @@ public class Role implements Serializable {
         this.roleId = roleId;
     }
 
-    public String getRoleName() {
+    public RoleName getRoleName() {
         return roleName;
     }
 
-    public void setRoleName(String roleName) {
+    public void setRoleName(RoleName roleName) {
         this.roleName = roleName;
     }
 
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    public Role(Long roleId, String roleName, Account account) {
+    
+    public Role(Long roleId, RoleName roleName, List<Account> account) {
         super();
         this.roleId = roleId;
         this.roleName = roleName;
-        this.account = account;
     }
 
     public Role() {

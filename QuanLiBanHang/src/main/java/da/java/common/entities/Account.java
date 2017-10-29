@@ -2,14 +2,20 @@ package da.java.common.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -29,15 +35,18 @@ public class Account implements Serializable {
     private Long accountId;
     
     /** The username*/
-    @Column(name = "username", nullable = false, updatable=false, unique=true)
-    private String username;
+    @Email
+    @NotEmpty
+    @Column(name = "email", nullable = false, updatable=false, unique=true)
+    private String email;
     
     /** The password*/
-    @JsonIgnore
+    @NotEmpty
     @Column(name = "password", nullable = false)
     private String password;
     
     /** Phone number of an user*/
+    @NotEmpty
     @Column(name = "phone", nullable = false, unique=true)
     private String phone;
     
@@ -46,27 +55,26 @@ public class Account implements Serializable {
     private String address;
     
     /** Real name of an user*/
-    @Column(name = "real_name")
+    @NotEmpty
+    @Column(name = "real_name", nullable = false)
     private String realName;
     
     /** RoleId of an user*/
-    @OneToOne
-    @JoinColumn(name = "role_id", nullable = false)
+    @JsonIgnore
+    @ManyToOne(cascade=CascadeType.MERGE)
+    @JoinColumn(name = "role_id")
+    @LazyCollection(LazyCollectionOption.FALSE)
     private Role roleId;
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
+    public Account(Long accountId, String email, String password, String phone, String address, String realName,
+            Role roleId) {
+        super();
+        this.accountId = accountId;
+        this.email = email;
+        this.password = password;
         this.phone = phone;
-    }
-
-    public Role getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Role roleId) {
+        this.address = address;
+        this.realName = realName;
         this.roleId = roleId;
     }
 
@@ -78,12 +86,12 @@ public class Account implements Serializable {
         this.accountId = accountId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -93,8 +101,14 @@ public class Account implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public String getAddress() {
         return address;
@@ -112,17 +126,11 @@ public class Account implements Serializable {
         this.realName = realName;
     }
 
-    
+    public Role getRoleId() {
+        return roleId;
+    }
 
-    public Account(Long accountId, String username, String password, String phone, String address, String realName,
-            Role roleId) {
-        super();
-        this.accountId = accountId;
-        this.username = username;
-        this.password = password;
-        this.phone = phone;
-        this.address = address;
-        this.realName = realName;
+    public void setRoleId(Role roleId) {
         this.roleId = roleId;
     }
 

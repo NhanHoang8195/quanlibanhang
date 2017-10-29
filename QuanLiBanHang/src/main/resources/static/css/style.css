@@ -21,6 +21,15 @@ body a{
 	-ms-transition: 0.5s all;
 	-moz-transition: 0.5s all;
 }
+.clearfix a {
+	background-color: #426ea2;
+	width: 124px;
+	margin-left: 49px;
+}
+
+.navbar-default {
+	background-color: #539a54
+}
 .header_top{
 	background: #f7f7f7;
 	padding: 2px 0;
@@ -55,6 +64,8 @@ body a{
   border: 1px solid #ddd;
   position: relative;
   float: left;
+  margin-left: -397px;
+  margin-top: 9px;
 }
 .search input[type="text"] {
 	border: none;
@@ -62,7 +73,7 @@ body a{
 	background: none;
 	font-size:0.85em;
     color:#999;
-	width:150px;
+	width:400px;
 	padding:7px;
 	-webkit-apperance:none;
 	margin:0;
@@ -71,9 +82,7 @@ body a{
 	-ms-transition: all 0.5s ease-out;
 	-o-transition: all 0.5s ease-out;
 }
-.search input[type="text"]:focus{
-	width:160px;
-}
+
 .search input[type="submit"] {
 	  border: none;
 	  text-indent: -9999px;
@@ -165,6 +174,7 @@ body a{
 }
 .logo h1 a span{
 	color:#f54d56;
+	margin-left: -21px;
 }
 .logo h1 a{
 	color:#333;
@@ -213,6 +223,7 @@ body a{
 }
 .col-xs-6.menu {
   padding-right: 0;
+  margin-top: -4px;
 }
 .menu{
   width: 82% !important;
@@ -1325,7 +1336,7 @@ p.empty{
   float:right;
 }
 p.empty a{
-  color: #000;
+  color: #2f26ad;
 }
 .box_11-cart{
    float:right;
@@ -1994,6 +2005,20 @@ a.b-home:hover{
 	font-size:0.8125em;
 	padding:10px;
 }
+.login-right input[type="password"] {
+    border: 1px solid #DDDBDB;
+    outline-color:#fb4d01;
+    width: 96%;
+    font-size:0.8125em;
+    padding:10px;
+}
+.login-right input[type="password"] {
+    border: 1px solid #DDDBDB;
+    outline-color:#fb4d01;
+    width: 96%;
+    font-size:0.8125em;
+    padding:10px;
+}
 .login-right input[type="submit"] {
 	background:#f54d56;
 	color: #FFF;
@@ -2029,7 +2054,7 @@ p.cart {
 }
 /*--register--*/
 .register-top-grid h3, .register-bottom-grid h3 {
-	color:#df1f26;
+	color:#7bb1e6;
 	font-size: 1em;
 	padding-bottom: 5px;
 	margin: 0;
@@ -2046,7 +2071,7 @@ p.cart {
 	padding-bottom: 0.2em;
 	display: block;
 }
-.register-top-grid input[type="text"], .register-bottom-grid input[type="text"] {
+.register-top-grid input[type="text"], .register-bottom-grid input[type="password"] {
 	border: 1px solid #EEE;
 	outline-color:#FF5B36;
 	width: 96%;
@@ -2124,7 +2149,7 @@ p.cart {
 	margin-top:1em;
 }
 .register-but form input[type="submit"] {
-	background:#df1f26;
+	background:#1d841c;
 	color: #FFF;
 	font-size: 0.8em;
 	padding: 0.8em 2em;
@@ -2138,7 +2163,21 @@ p.cart {
 	outline:none;
 }
 .register-but input[type="submit"]:hover {
-	background:#000;
+	background:#37b339;
+}
+.register-but input[type="submit"]{
+	background:#1d841c;
+    color: #FFF;
+    font-size: 0.8em;
+    padding: 0.8em 2em;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    display: inline-block;
+    text-transform: uppercase;
+    border:none;
+    outline:none;
 }
 .register-bottom-grid {
 	margin-top:3em;
