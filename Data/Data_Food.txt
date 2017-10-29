@@ -43,7 +43,7 @@
 {
 	"foodName": "Bánh Pie nhân khoai môn"
 	"price": 25000,
-	"image": "/static/images/"	
+	"image": "/static/images/chaoech.jpg"	
 
 },
 {
@@ -55,6 +55,6 @@
 {
 	"foodName": "Hamberger"
 	"price": 65000,
-	"image": "/static/images/"	
+	"image": "/static/images/string.jpg"	
 
 }
