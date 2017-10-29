@@ -1,0 +1,60 @@
+﻿{
+	"branchId": 1,
+	"phone": "0909101010",
+	"address": "200 Tạ Quang Bửu quận 8, TPHCM",
+	"image": ""
+},
+{
+	"branchId": 2,
+	"phone": "Cơm gà",
+	"address": "100 Lý Thái Tổ, Quận 10, TPHCM",
+	"image": ""
+},
+{
+	"branchId": 3,
+	"phone": "0909202020",
+	"address": "454 Đường 3/2 Quận 10, TPHCM",
+	"image": ""
+},
+{
+	"branchId": 4,
+	"phone": "0909303030",
+	"address": "179 Lý Thường Kiệt, Quận 10, TPHCM",
+	"image": ""
+},
+{
+	"branchId": 5,
+	"phone": "0909404040",
+	"address": "205 Trần Phú, Quận 5, TPHCM",
+	"image": ""
+},
+{
+	"branchId": 6,
+	"phone": "0909505050",
+	"address": "410 Sư Vạn Hạnh, Quận 10, TPHCM",
+	"image": ""
+},
+{
+	"branchId": 7,
+	"phone": "0909606060",
+	"address": "300 Hai Bà Trưng, Quận 1, TPHCM",
+	"image": ""
+},
+{
+	"branchId": 8,
+	"phone": "0909707070",
+	"address": "478 Thành Thái, Quận 10, TPHCM",
+	"image": ""
+},
+{
+	"branchId": 9,
+	"phone": "0909808080",
+	"address": "194 Hùng Vương, quận 10, TPHCM",
+	"image": ""
+},
+{
+	"branchId": 10,
+	"phone": "0909212121",
+	"address": "100 Hồ Thị Kỷ, quận 10, TPHCM",
+	"image": ""
+},
