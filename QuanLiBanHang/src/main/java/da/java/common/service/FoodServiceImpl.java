@@ -58,4 +58,9 @@ public class FoodServiceImpl implements FoodService {
         }
     }
     
+    public List<Food> search(String q)
+    {
+    	// NeetToImplement
+    	return getBestSell();
+    }
 }

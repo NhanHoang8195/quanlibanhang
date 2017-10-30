@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import da.java.common.entities.Food;
 import da.java.common.service.FoodService;
@@ -31,5 +32,13 @@ public class FoodController {
 	@GetMapping("/{id}")
     public String details(@PathVariable int id, Model model) {
         return "food/details";
+    }
+	
+	@GetMapping("/search")
+    public String list(@RequestParam String q, Model model) {
+		List<Food> listFood = foodService.search(q);
+		model.addAttribute("listFood", listFood);
+		model.addAttribute("q", q);
+        return "food/index";
     }
 }

@@ -11,4 +11,5 @@ public interface FoodService {
     /** Get top 5 sell*/
     public List<Food> getBestSell();
     
+    public List<Food> search(String q);
 }

@@ -4,7 +4,11 @@
 <body>
 <div th:replace="shared/header :: header"></div>
 
- <h3 class="m_1" style="margin-top: 39px">Danh sách món ăn</h3>
+ <h3 class="m_1" style="margin-top: 39px" th:unless="${q}">Danh sách món ăn 
+</h3>
+ <h3 class="m_1" style="margin-top: 39px" th:if="${q}" >Danh sách món ăn cho từ khóa
+ 	<i th:text="${q}"></i>
+</h3>
 <div class="container">
 	<div class="box_1">
 		<div class="col-md-12">
