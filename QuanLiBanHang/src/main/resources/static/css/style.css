@@ -1745,12 +1745,12 @@ span.right_line2 {
 	bottom: 10px;
 }
 .images_3_of_2 {
-  width: 26.2%;
+  width: 42.2%;
   float: left;
   margin-right: 2.6%;
 }
 .span_3_of_2 {
-  width: 70.3333%;
+  width: 54.3333%;
 }
 .desc1 {
   display: block;
@@ -2384,7 +2384,6 @@ a.item_add1 {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   padding: 10px 15px;
-  background: url(0) #f54d56;
 }
 a.item_add1:hover{
 	background:rgb(3, 193, 167);
@@ -2666,7 +2665,7 @@ ul.single_social li {
   margin-right: 2.6%;
 }
 .span_3_of_2 {
-  width: 57.3333%;
+  width: 54.3333%;
 }
 ul.single_social li {
   margin-right: 2%;
