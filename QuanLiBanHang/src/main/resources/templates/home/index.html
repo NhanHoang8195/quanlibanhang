@@ -23,7 +23,7 @@
 						<div th:each="food,iterStat : ${topSell}" class="col_1_of_3 span_1_of_5 simpleCart_shelfItem">
 							<div class="shop-holder">
 								<div class="product-img">
-									<a href="/food/0"> 
+									<a  style="cursor: pointer;"> 
 										<img width="225" height="265" th:src="${food.image}"
 										src="images/pic3.jpg" class="img-responsive" alt="item4" />
 									</a> 
@@ -32,7 +32,7 @@
 							</div>
 							<div class="shop-content" style="height: 80px;">
 								<div>
-									<a href="/food/0" rel="tag" th:text="${food.foodName}"></a>
+									<a  style="cursor: pointer;" rel="tag" th:text="${food.foodName}"></a>
 								</div>
 								<span class="amount item_price" th:text="${food.price + ' VND'}"></span>
 							</div>
@@ -52,7 +52,7 @@
 						<div th:each="food,iterStat : ${listFood}" class="col_1_of_3 span_1_of_5 simpleCart_shelfItem">
 							<div class="shop-holder">
 								<div class="product-img">
-									<a href="/food/0"> 
+									<a  style="cursor: pointer;"> 
 										<img width="225" height="265" th:src="${food.image}"
 										src="images/pic3.jpg" class="img-responsive" alt="item4" />
 									</a> 
@@ -61,7 +61,7 @@
 							</div>
 							<div class="shop-content" style="height: 80px;">
 								<div>
-									<a href="/food/0" rel="tag" th:text="${food.foodName}"></a>
+									<a  style="cursor: pointer;" rel="tag" th:text="${food.foodName}"></a>
 								</div>
 								<span class="amount item_price" th:text="${food.price + ' VND'}"></span>
 							</div>

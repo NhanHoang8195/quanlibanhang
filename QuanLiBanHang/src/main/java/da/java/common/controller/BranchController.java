@@ -10,13 +10,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import da.java.common.entities.Branch;
+import da.java.common.entities.Food;
 import da.java.common.repository.BranchRepository;
+import da.java.common.service.FoodService;
 
 @Controller
 @RequestMapping("branch")
 public class BranchController {
 	 @Autowired
 	    BranchRepository branchRepository;
+	 @Autowired
+	    private FoodService foodService;
 	 
 	@GetMapping("/")
     public String index(Model model) {
@@ -27,6 +31,13 @@ public class BranchController {
 	
 	@GetMapping("/{id}")
     public String details(@PathVariable int id, Model model) {
+		 Branch branch = (Branch) branchRepository.findOne((long)id);
+		 model.addAttribute("branch", branch);
+		 
+		 // NeedToImplement
+		 List<Food> listFood = foodService.getFoodList();
+			model.addAttribute("listFood", listFood);
+			
         return "branch/details";
     }
 }
