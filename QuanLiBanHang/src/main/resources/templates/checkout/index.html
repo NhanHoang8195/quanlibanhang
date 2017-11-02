@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="shared/layout :: head"></head>
+<body>
+<div th:replace="shared/header :: header"></div>
+
+<div class="container" ng-app="myApp" ng-controller="checkoutController">
+	<div class="check">	 
+		<div class="col-md-9 cart-items">
+			 <h1>Giỏ hàng ({{cart.items.length}})</h1>
+			 <div class="cart-header" ng-repeat="item in cart.items">
+				 <div class="close1" ng-click="removeItem($index)"> </div>
+				 <div class="cart-sec simpleCart_shelfItem">
+						<div class="cart-item cyc">
+							 <img ng-src="{{item.image}}" src="/images/pic1.jpg" class="img-responsive" alt=""/>
+						</div>
+					   <div class="cart-item-info">
+						<h3><a href="#" ng-bind="item.foodName">Mountain Hopper(XS R034)</a></h3>
+						<ul class="qty">
+							
+							<li><p>Số lượng : {{item.quantity}}</p></li>
+						</ul>
+						<div class="delivery">
+							 <p>Giá tiền : {{item.price}}</p>
+							 <span>Thành tiền : {{item.quantity*item.price}}</span>
+							 <div class="clearfix"></div>
+				        </div>	
+					   </div>
+					   <div class="clearfix"></div>
+											
+				  </div>
+			 </div>	
+		 </div>
+		 <div class="col-md-3 cart-total">
+			 <a class="continue" href="#" ng-click="removeCart()">Xóa hết</a>
+			 <div class="price-details">
+				 <h3>Chi tiết giá tiền</h3>
+				 <span>Tổng tiền</span>
+				 <span class="total1" ng-bind="cart.total">6200.00</span>
+				 <span>Giảm giá</span>
+				 <span class="total1">---</span>
+				 <span>Tiền vận chuyển</span>
+				 <span class="total1">---</span>
+				 <div class="clearfix"></div>				 
+			 </div>	
+			 <ul class="total_price">
+			   <li class="last_price"> <h4>Thành tiền</h4></li>	
+			   <li class="last_price" ng-bind="cart.total"><span>6350.00</span></li>
+			   <div class="clearfix"> </div>
+			 </ul>
+			
+			 
+			 <div class="clearfix"></div>
+			 <a class="order" href="#">Đặt hàng</a>
+		</div>
+	 </div>
+</div>
+
+<div th:replace="shared/footer :: footer"></div>
+</body>
+</html>
