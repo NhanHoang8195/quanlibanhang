@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="shared/layout :: head"></head>
+<body>
+<div th:replace="shared/header :: header"></div>
+
+<div class="single_top">
+     <div class="container"> 
+        <div class="register">
+              <div class="col-md-6 login-right">
+                <h3>REGISTERED CUSTOMERS</h3>
+                <p>If you have an account with us, please log in.</p>
+                <form  th:object="${login}" th:method="POST" novalidate="novalidate">
+                  <div>
+                  <p th:if="${param.error}" style="color: red">Email hoặc mật khẩu chưa chính xác</p>
+                    <span>Email Address<label>*</label></span>
+                    <input type="text" th:field="*{email}" th:errorclass="field-error" name="email"/> 
+                    <em th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red"></em>
+                    
+                  </div>
+                  <div>
+                    <span>Password<label>*</label></span>
+                    <input type="password" th:field="*{password}" th:errorclass="field-error" name="password"/>
+                    <em th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color: red"></em>
+                  </div>
+                  <label><input id="remember_me" name = "remember-me" type="checkbox"/>Remember Me?</label> <br/>
+                  <a class="forgot" href="#">Forgot Your Password?</a>
+                  <input type="submit" value="Login" />
+                  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                </form>
+               </div>
+                <div class="col-md-6 login-left">
+                 <h3>NEW CUSTOMERS</h3>
+                 <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+                 <a class="acount-btn" href="./register">Create an Account</a>
+               </div>   
+               <div class="clearfix"> </div>
+        </div>
+     </div>
+</div>  
+
+<div th:replace="shared/footer :: footer"></div>
+</body>
+</html>

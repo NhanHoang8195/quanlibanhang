@@ -1,23 +1,22 @@
 package da.java.common.entities;
 
 import java.io.Serializable;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "account")
@@ -60,23 +59,14 @@ public class Account implements Serializable {
     private String realName;
     
     /** RoleId of an user*/
-    @JsonIgnore
-    @ManyToOne(cascade=CascadeType.MERGE)
-    @JoinColumn(name = "role_id")
+    @ManyToMany
+    @JoinTable(
+            name = "account_role",
+            joinColumns = @JoinColumn(name = "account_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
     @LazyCollection(LazyCollectionOption.FALSE)
-    private Role roleId;
-
-    public Account(Long accountId, String email, String password, String phone, String address, String realName,
-            Role roleId) {
-        super();
-        this.accountId = accountId;
-        this.email = email;
-        this.password = password;
-        this.phone = phone;
-        this.address = address;
-        this.realName = realName;
-        this.roleId = roleId;
-    }
+    private Set<Role> roles;
 
     public Long getAccountId() {
         return accountId;
@@ -126,16 +116,28 @@ public class Account implements Serializable {
         this.realName = realName;
     }
 
-    public Role getRoleId() {
-        return roleId;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setRoleId(Role roleId) {
-        this.roleId = roleId;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public Account(Long accountId, String email, String password, String phone, String address, String realName,
+            Set<Role> roles) {
+        super();
+        this.accountId = accountId;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.address = address;
+        this.realName = realName;
+        this.roles = roles;
     }
 
     public Account() {
         super();
     }
-    
+
 }

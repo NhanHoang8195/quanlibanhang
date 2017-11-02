@@ -8,23 +8,29 @@
 	 <div class="container"> 
 	    <div class="register">
 			  <div class="col-md-6 login-right">
+                 <div th:if="${success}" class="row alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span th:text="${success}"></span>
+                </div>
 			  	<h3>REGISTERED CUSTOMERS</h3>
 				<p>If you have an account with us, please log in.</p>
-				<form  th:object="${login}" th:method="POST" novalidate="novalidate">
+				<form th:object="${login}" th:action="@{/account/login}" th:method="POST" >
 				  <div>
                   <p th:if="${param.error}" style="color: red">Email hoặc mật khẩu chưa chính xác</p>
 					<span>Email Address<label>*</label></span>
-					<input type="text" th:field="*{email}" th:errorclass="field-error"/> 
+					<input type="text" th:field="*{email}" th:errorclass="field-error" name="email"/> 
                     <em th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red"></em>
                     
 				  </div>
 				  <div>
 					<span>Password<label>*</label></span>
-					<input type="password" th:field="*{password}" th:errorclass="field-error"/>
+					<input type="password" th:field="*{password}" th:errorclass="field-error" name="password"/>
                     <em th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color: red"></em>
 				  </div>
+                  <label><input id="remember_me" name = "remember-me" type="checkbox"/>Remember Me?</label> <br/>
 				  <a class="forgot" href="#">Forgot Your Password?</a>
 				  <input type="submit" value="Login" />
+                  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 			    </form>
 			   </div>
 			    <div class="col-md-6 login-left">

@@ -1,8 +1,9 @@
 package da.java.common.entities;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,7 +11,11 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -33,39 +38,49 @@ public class Role implements Serializable {
     private Long roleId;
     
     /** The role name*/
-    @JsonIgnore
     @Enumerated(EnumType.STRING)
     @Column(name = "role_name")
     private RoleName roleName;
     
+    
+    @ManyToMany(mappedBy = "roles", cascade={CascadeType.ALL})
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private Set<Account> account;
     /** The relationship 1:1 with account table*/
    
     //============ GETTER-SETTER-CONSTRUCTOR=============
     
+    
+    public Role(RoleName roleName) {
+        this.roleName = roleName;
+    }
+    public Role(Long roleId, RoleName roleName, Set<Account> account) {
+        super();
+        this.roleId = roleId;
+        this.roleName = roleName;
+        this.account = account;
+    }
+    
+    
+    public Role() {
+        super();
+    }
     public Long getRoleId() {
         return roleId;
     }
-
     public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
-
     public RoleName getRoleName() {
         return roleName;
     }
-
     public void setRoleName(RoleName roleName) {
         this.roleName = roleName;
     }
-
-    
-    public Role(Long roleId, RoleName roleName, List<Account> account) {
-        super();
-        this.roleId = roleId;
-        this.roleName = roleName;
+    public Set<Account> getAccount() {
+        return account;
     }
-
-    public Role() {
-        super();
+    public void setAccount(Set<Account> account) {
+        this.account = account;
     }
 }

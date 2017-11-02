@@ -8,12 +8,13 @@
         <div class="container">
             <div class="register">
                 <form th:object="${account}" th:method="POST" novalidate="novalidate">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
                     <div class="register-top-grid">
                         <h3>PERSONAL INFORMATION</h3>
                         <div>
                             <p th:if="${param.error}" style="color: red">Email đã có người đăng kí</p>
                             <span>Email Address<label>*</label></span>
-                             <input type="text" th:field="*{email}" th:errorclass="field-error" />
+                             <input type="text" th:field="*{email}" th:errorclass="field-error" name="email"/>
                             <em th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red"></em>
                         </div>
                         <div>
@@ -39,7 +40,7 @@
                         <h3>LOGIN INFORMATION</h3>
                         <div>
                             <span>Password<label>*</label></span> 
-                            <input id="password" type="password" th:field="*{password}" th:errorclass="field-error"/>
+                            <input id="password" type="password" th:field="*{password}" th:errorclass="field-error" name="password"/>
                             <em th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color: red"></em>
                         </div>
                         <div>

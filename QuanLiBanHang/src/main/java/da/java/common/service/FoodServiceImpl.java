@@ -58,9 +58,12 @@ public class FoodServiceImpl implements FoodService {
         }
     }
     
-    public List<Food> search(String q)
-    {
-    	// NeetToImplement
-    	return getBestSell();
+    public List<Food> search(String name) {
+        try{
+            List<Food> listSearchResult = foodRepo.findByFoodNameContainingIgnoreCase(name);
+            return listSearchResult;
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
