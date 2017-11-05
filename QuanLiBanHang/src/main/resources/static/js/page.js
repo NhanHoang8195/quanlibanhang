@@ -33,6 +33,14 @@ function addToCart(element)
 	UpdateCartObject(item);
 	UpdateCartUI();
 }
+function CalculateCartTotal()
+{
+	cart.total = 0;
+	var count = cart.items.length;
+	for(i=0;i<count;i++){
+		cart.total = cart.total + cart.items[i].total;
+	}
+}
 function UpdateCartObject(item)
 {
 	InitCart();
@@ -45,41 +53,40 @@ function UpdateCartObject(item)
 			isExist = true;
 			loopItem.quantity = loopItem.quantity + 1;
 			loopItem.total = loopItem.price*loopItem.quantity;
-			cart.total = cart.total + loopItem.price;
 		} 
 	}
 	if(!isExist){
 		cart.items.push(item);
-		cart.total = cart.total + item.price;
 	}
 	
 	localStorageAPI.setObject("cart", cart);
 }
 function UpdateCartUI()
 {
+	InitCart();
+	CalculateCartTotal();
 	document.getElementsByClassName("cart_total")[0].innerText = cart.total;
 	document.getElementsByClassName("cart_quantity")[0].innerText = cart.items.length;
 }
 function RemoveCart()
 {
 	localStorageAPI.removeItem("cart");
-	InitCart();
+	
 	UpdateCartUI();
 }
 function InitCart()
 {
-	cart.items = [];
-	cart.total = 0;
-	cart.countItems = 0;
-	
 	var tempCart = localStorageAPI.getObject("cart");
 	if(tempCart != null){
-		cart = tempCart;
+		cart.items = tempCart.items;
+		return;
 	}
+	cart.items = [];
 }
 function RemoveItem(index){
 	cart.items.splice(index, 1);
 	localStorageAPI.setObject("cart", cart);
+	UpdateCartUI();
 }
 var localStorageAPI = {
 		 
