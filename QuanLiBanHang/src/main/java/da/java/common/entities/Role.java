@@ -83,4 +83,17 @@ public class Role implements Serializable {
     public void setAccount(Set<Account> account) {
         this.account = account;
     }
+    
+    @Override
+    public boolean equals(Object object)
+    {
+        boolean sameSame = false;
+
+        if (object != null && object instanceof Role)
+        {
+            sameSame = this.roleName.equals(((Role) object).roleName);
+        }
+
+        return sameSame;
+    }
 }

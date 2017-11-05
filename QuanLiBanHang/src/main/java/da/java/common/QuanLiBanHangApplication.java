@@ -15,10 +15,15 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.transaction.annotation.Transactional;
 
+import da.java.common.entities.Account;
 import da.java.common.entities.Branch;
 import da.java.common.entities.Food;
+import da.java.common.entities.Role;
+import da.java.common.enums.RoleName;
+import da.java.common.repository.AccountRepository;
 import da.java.common.repository.BranchRepository;
 import da.java.common.repository.FoodRepository;
+import da.java.common.repository.RoleRepository;
 
 @SpringBootApplication
 public class QuanLiBanHangApplication implements CommandLineRunner{
@@ -49,21 +54,19 @@ public class QuanLiBanHangApplication implements CommandLineRunner{
 	        }
 	    }
 	}
-
+	
+	 @Autowired
+		private RoleRepository roleRepository;
+	 @Autowired
+		private FoodRepository foodRepository;
+	 @Autowired
+		private BranchRepository branchRepository;
+	 
 	@Override
     public void run(String... arg0) throws Exception {
-		initDataForFoodTable();
-		initDataForBranchTable();
+		DataInitializer dataInitializer = new DataInitializer();
+		dataInitializer.initFood(foodRepository);
+		dataInitializer.initBranch(branchRepository);
+		dataInitializer.initRole(roleRepository);
     }
-
-
-	 public void initDataForFoodTable()
-	{
-		
-	}
-	
-	 public void initDataForBranchTable()
-	 {
-	
-	 }
 }
