@@ -23,4 +23,8 @@ public class AdminController {
 		return "admin/index";
     }
 	
+	@GetMapping("/food")
+    public String food(Model model) {
+		return "admin/food";
+    }
 }
