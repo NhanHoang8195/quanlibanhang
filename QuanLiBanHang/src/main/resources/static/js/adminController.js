@@ -64,4 +64,18 @@ app.controller('foodController', function($scope, $http) {
 	
 	scope.get();
 });
+app.controller('branchController', function($scope, $http) {
+	var scope = $scope; var http = $http;
+	scope.name = "branches"
+	defineBaseFunction(scope, http);
+	
+	scope.get();
+});
+app.controller('customerController', function($scope, $http) {
+	var scope = $scope; var http = $http;
+	scope.name = "accounts"
+	defineBaseFunction(scope, http);
+	
+	scope.get();
+});
 

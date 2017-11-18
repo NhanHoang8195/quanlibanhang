@@ -27,4 +27,13 @@ public class AdminController {
     public String food(Model model) {
 		return "admin/food";
     }
+	
+	@GetMapping("/branch")
+    public String branch(Model model) {
+		return "admin/branch";
+    }
+	@GetMapping("/customer")
+    public String customer(Model model) {
+		return "admin/customer";
+    }
 }
