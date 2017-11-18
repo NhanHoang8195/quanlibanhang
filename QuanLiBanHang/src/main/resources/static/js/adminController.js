@@ -7,9 +7,6 @@ $(document).ready(function(c) {
     if (element.is('li')) { 
          element.addClass('active').parent().parent('li').addClass('active')
      }
-    
-    
-    UpdateCartUI();
 });
 
 var app = angular.module('myApp', []);
