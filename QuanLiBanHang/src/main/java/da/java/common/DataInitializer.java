@@ -2,8 +2,6 @@ package da.java.common;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import da.java.common.entities.Branch;
 import da.java.common.entities.Food;
 import da.java.common.entities.Role;
