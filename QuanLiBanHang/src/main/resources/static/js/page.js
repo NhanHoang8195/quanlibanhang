@@ -3,12 +3,6 @@ $(document).ready(function(c) {
     var element = $('ul.megamenu a').filter(function() {
     	return this.href == url || (url.href.indexOf(this.href) == 0 && this.pathname != '/') ; 
     }).parent().addClass('active');
-    
-	/*$('.close2').on('click', function(c){
-		$('.cart-header2').fadeOut('slow', function(c){
-	$('.cart-header2').remove();
-	});
-	});	 */
 	
     if (element.is('li')) { 
          element.addClass('active').parent().parent('li').addClass('active')

@@ -56,6 +56,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
                  .logoutUrl("/account/logout")
                  .and()
             .rememberMe().tokenValiditySeconds(1000);
+        http.csrf().disable();
         logger.debug("OUT - configure(HttpSecurity http)");
     }
 

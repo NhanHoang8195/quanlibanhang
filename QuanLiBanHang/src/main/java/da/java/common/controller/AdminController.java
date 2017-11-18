@@ -18,7 +18,7 @@ import da.java.common.service.FoodService;
 @RequestMapping("admin")
 public class AdminController {
 	
-	@GetMapping("/")
+	@GetMapping("/index")
     public String index(Model model) {
 		return "admin/index";
     }
