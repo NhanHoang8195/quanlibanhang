@@ -78,4 +78,11 @@ app.controller('customerController', function($scope, $http) {
 	
 	scope.get();
 });
+app.controller('categoryController', function($scope, $http) {
+	var scope = $scope; var http = $http;
+	scope.name = "categories"
+	defineBaseFunction(scope, http);
+	
+	scope.get();
+});
 

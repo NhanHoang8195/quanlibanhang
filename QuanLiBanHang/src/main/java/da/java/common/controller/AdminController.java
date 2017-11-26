@@ -28,4 +28,9 @@ public class AdminController {
     public String customer(Model model) {
 		return "admin/customer";
     }
+	@GetMapping("/category")
+    public String category(Model model) {
+		return "admin/category";
+    }
+	
 }
