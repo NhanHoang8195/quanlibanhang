@@ -16,8 +16,8 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
-@Table(name = "categories")
-public class Categories implements Serializable {
+@Table(name = "category")
+public class Category implements Serializable {
     /**
      * 
      */
@@ -60,14 +60,14 @@ public class Categories implements Serializable {
         this.foods = foods;
     }
 
-    public Categories(Long categoryId, String name, List<Food> foods) {
+    public Category(Long categoryId, String name, List<Food> foods) {
         super();
         this.categoryId = categoryId;
         this.name = name;
         this.foods = foods;
     }
 
-    public Categories() {
+    public Category() {
         super();
     }
     
