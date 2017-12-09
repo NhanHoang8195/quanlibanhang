@@ -20,6 +20,7 @@
 							<table id="mytable" class="table table-bordred table-striped">
 								<thead>
 									<th>Name</th>
+									<th>Category</th>
 									<th>Price</th>
 									<th>Image</th>
 									
@@ -30,6 +31,7 @@
 								<tbody>
 									<tr ng-repeat="model in models">
 										<td ng-bind="model.foodName">Mohsin</td>
+										<td ng-bind="model.category.name">Mohsin</td>
 										<td ng-bind="model.price">Irshad</td>
 										<td><img style="width: 100px;" ng-src="{{model.image}}" /> </td>
 										<td><p data-placement="top" data-toggle="tooltip"
@@ -75,6 +77,19 @@
 						<div class="form-group">
 							Name: 
 							<input class="form-control " type="text" ng-model="currentModel.foodName"/>
+						</div>
+						<div class="form-group">
+							Category: 
+							<div class="dropdown">
+							  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+							  			{{currentModel.category.name}}
+							  <span class="caret"></span></button>
+							  <ul class="dropdown-menu">
+							    <li ng-repeat="model in categories" ng-click="currentModel.category = model">
+							    	<a href="#">{{model.name}}</a>
+							    </li>
+							  </ul>
+							</div>
 						</div>
 						<div class="form-group">
 							Price: 

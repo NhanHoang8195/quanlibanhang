@@ -3,6 +3,7 @@ package da.java.common.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,9 +32,8 @@ public class Category implements Serializable {
     @Column(name = "name")
     private String name;
     
-    @OneToMany
-    @JoinColumn(name = "category_id")
-    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.TRUE)
     private List<Food> foods;
 
     public Long getCategoryId() {
