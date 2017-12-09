@@ -1,5 +1,6 @@
 function crudFunction(scope, http)
 {
+	var url = "/"+ scope.name + "/"; 
 	var configForAssociation = {
 		headers:{
 			'Content-Type': 'text/uri-list'
@@ -22,7 +23,7 @@ function crudFunction(scope, http)
 	    	for(var i=0;i<models.length;i++){
 	    		scope.getExtendProperties(models[i]);
 	    	}
-//	    	scope.getExtendProperties(models[2]);
+	    	
 	        scope.models = models;
 	    });
 	}

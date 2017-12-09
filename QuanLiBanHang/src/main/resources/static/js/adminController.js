@@ -30,7 +30,7 @@ angular.module('myApp').directive('customOnChange', function () {
 });
 function defineBaseFunction(scope, http){
 	scope.currentModel = {};
-	var url = "/"+ scope.name + "/"; 
+	
 	scope.setCurrentModel = function(index){
 		scope.currentModel = JSON.parse(JSON.stringify(scope.models[index]));
 	};
@@ -71,9 +71,23 @@ app.controller('foodController', function($scope, $http) {
 app.controller('branchController', function($scope, $http) {
 	var scope = $scope; var http = $http;
 	scope.name = "branches"
-	defineBaseFunction(scope, http);
 	
+	scope.$watch('currentModel.foods', function() {
+		if(scope.currentModel.foods == undefined){
+			scope.currentModel.foods = [];
+			return;
+		}
+		scope.filteredFoods = scope.foods.filter( function(item) {
+			return !scope.currentModel.foods.includes(item);
+		});
+    }, true);
+	
+	defineBaseFunction(scope, http);
+
 	scope.get();
+	scope.get("foods", function(data){
+		scope.foods = data;
+	});	
 });
 app.controller('customerController', function($scope, $http) {
 	var scope = $scope; var http = $http;
