@@ -31,8 +31,8 @@ angular.module('myApp').directive('customOnChange', function () {
 function defineBaseFunction(scope, http){
 	scope.currentModel = {};
 	
-	scope.setCurrentModel = function(index){
-		scope.currentModel = JSON.parse(JSON.stringify(scope.models[index]));
+	scope.setCurrentModel = function(model){
+		scope.currentModel = JSON.parse(JSON.stringify(model));
 	};
 	
 	scope.emptyCurrentModel = function(){
