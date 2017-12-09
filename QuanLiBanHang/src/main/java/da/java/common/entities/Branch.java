@@ -1,13 +1,21 @@
 package da.java.common.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name = "branch")
@@ -115,4 +123,18 @@ public class Branch implements Serializable {
         return sameSame;
     }
     
+    @ManyToMany(cascade = {CascadeType.MERGE})
+    @JoinTable(name = "branch_food", 
+    joinColumns = @JoinColumn(name = "branch_id"),
+    inverseJoinColumns = @JoinColumn(name = "food_id"))
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Food> foods;
+
+	public List<Food> getFoods() {
+		return foods;
+	}
+
+	public void setFoods(List<Food> foods) {
+		this.foods = foods;
+	}
 }

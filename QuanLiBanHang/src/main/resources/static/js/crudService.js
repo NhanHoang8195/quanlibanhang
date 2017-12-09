@@ -21,7 +21,7 @@ function crudFunction(scope, http)
 	    		return;
 	    	}
 	    	for(var i=0;i<models.length;i++){
-	    		scope.getExtendProperties(models[i]);
+	    		scope.getExtendedProperties(models[i]);
 	    	}
 	    	
 	        scope.models = models;
@@ -30,44 +30,60 @@ function crudFunction(scope, http)
 	
 	scope.post = function()
 	{
-		http.post(url, scope.currentModel)
+		http.post(url, removeExtendedProperties(scope.currentModel))
 		.then(function(response) {
 			var model = getModelFromReponse(response);
-			scope.putExtendProperties(model);
+			scope.putExtendedProperties(model);
 			
-			scope.get();
+			setTimeout(function(){
+				scope.get();
+			}, 1000);
 		})
 	}
-	scope.getExtendProperties = function(model){
-		var extendProperties = model._links;
-		for(var propertyName in extendProperties) {
-			if(propertyName == "self" || extendProperties[propertyName].href == extendProperties["self"].href){
+	scope.getExtendedProperties = function(model){
+		var ExtendedProperties = model._links;
+		for(var propertyName in ExtendedProperties) {
+			if(propertyName == "self" || ExtendedProperties[propertyName].href == ExtendedProperties["self"].href){
 				continue;
 			}
 			callAjax(propertyName);
 		}
 		function callAjax(propertyName){
 			var tempPropertyName = propertyName;
-			var getPropertyUrl = extendProperties[tempPropertyName].href;
+			var getPropertyUrl = ExtendedProperties[tempPropertyName].href;
 			http.get(getPropertyUrl)
 			.then(function(response) {
 				model[tempPropertyName] = getModelFromReponse(response);
 			}, function(response){})
 		}
 	}
-	scope.putExtendProperties = function(model){
-		var extendProperties = model._links;
-		for(var propertyName in extendProperties) {
-			if(scope.currentModel[propertyName] == undefined 
-				|| scope.currentModel[propertyName]._links == undefined){
+	scope.putExtendedProperties = function(model){
+		var ExtendedProperties = model._links;
+		for(var propertyName in ExtendedProperties) {
+			if(scope.currentModel[propertyName] == undefined){
 				continue;
 			}
 			
-			var putPropertyUrl = extendProperties[propertyName].href;
-			http.put(putPropertyUrl, scope.currentModel[propertyName]._links.self.href, configForAssociation)
-			.then(function(response) {
+			var putPropertyUrl = ExtendedProperties[propertyName].href;
+			
+			if(scope.currentModel[propertyName]._links == undefined){
+				if(scope.currentModel[propertyName].length == undefined){
+					continue;
+				}
 				
-			})
+				var arrayModel = scope.currentModel[propertyName];
+				var associationLinks = "";
+				for(var i=0;i<arrayModel.length;i++){
+					associationLinks = associationLinks + arrayModel[i]._links.self.href + "\n";
+		    	}
+				
+				http.put(putPropertyUrl, associationLinks, configForAssociation)
+				.then(function(response) {})
+				continue;
+			}
+			
+			http.put(putPropertyUrl, scope.currentModel[propertyName]._links.self.href, configForAssociation)
+			.then(function(response) {})
 		}
 	}
 	
@@ -79,11 +95,12 @@ function crudFunction(scope, http)
 		
 		var putUrl = scope.currentModel._links.self.href;
 		
-		
-		http.put(putUrl, scope.currentModel)
+		http.put(putUrl, removeExtendedProperties(scope.currentModel))
 		.then(function(response) {
-			scope.putExtendProperties(scope.currentModel);
-			scope.get();
+			scope.putExtendedProperties(scope.currentModel);
+			setTimeout(function(){
+				scope.get();
+			}, 1000);
 		})
 	}
 	
@@ -105,5 +122,11 @@ function getModelFromReponse(response){
 	}
 	return response.data;
 }
-
+function removeExtendedProperties(model){
+	var newModel = JSON.parse(JSON.stringify(model));
+	for(var propertyName in model._links) {
+		newModel[propertyName] = undefined;
+	}
+	return newModel;
+}
 

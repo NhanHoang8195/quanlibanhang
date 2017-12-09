@@ -98,7 +98,7 @@
 							  			{{food.foodName}}
 							  <span class="caret"></span></button><span ng-click="currentModel.foods.splice($index,1);" class="glyphicon glyphicon-remove-circle" aria-hidden="true" style="font-size: 19px;top: 4px;left: 5px;color: red;cursor: pointer;"></span>
 							  <ul class="dropdown-menu">
-							    <li ng-repeat="model in filteredFoods" ng-click="currentModel.foods[$index] = model">
+							    <li ng-repeat="model in filteredFoods" ng-click="currentModel.foods[$parent.$index] = model">
 							    	<a href="#">{{model.foodName}}</a>
 							    </li>
 							  </ul>

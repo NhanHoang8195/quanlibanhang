@@ -84,7 +84,12 @@ app.controller('branchController', function($scope, $http) {
 				return;
 			}
 			scope.filteredFoods = scope.foods.filter( function(item) {
-				return !scope.currentModel.foods.includes(item);
+				for(var i=0;i<scope.currentModel.foods.length;i++){
+					if(scope.currentModel.foods[i].foodName == item.foodName){
+						return false;
+					}
+		    	}
+				return true;
 			});
 	    }, true);
 		

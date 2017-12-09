@@ -139,5 +139,18 @@ public class Food implements Serializable {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-    
+	
+  @JsonIgnore
+    @ManyToMany(cascade=CascadeType.MERGE, mappedBy = "foods")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Branch> branches;
+
+	public List<Branch> getBranches() {
+		return branches;
+	}
+	
+	public void setBranches(List<Branch> branches) {
+		this.branches = branches;
+	}
+  
 }
