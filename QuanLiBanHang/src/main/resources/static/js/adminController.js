@@ -104,7 +104,9 @@ app.controller('customerController', function($scope, $http) {
 });
 app.controller('categoryController', function($scope, $http) {
 	var scope = $scope; var http = $http;
-	scope.name = "categories"
+	scope.name = "categories";
+	scope.singularName = "category";
+	
 	defineBaseFunction(scope, http);
 	
 	scope.get();
