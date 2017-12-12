@@ -1,6 +1,6 @@
 package da.java.common.enums;
 
 public enum RoleName {
-    ADMIN,
-    MEMBER
+    ROLE_ADMIN,
+    ROLE_MEMBER
 }

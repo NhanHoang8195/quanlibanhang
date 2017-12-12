@@ -3,32 +3,30 @@ package da.java.common.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping("admin")
 public class AdminController {
 	
-	@GetMapping("/index")
+	@GetMapping({"/admin/index"})
     public String index(Model model) {
 		return "admin/index";
     }
 	
-	@GetMapping("/food")
+	@GetMapping("/admin/food")
     public String food(Model model) {
 		return "admin/food";
     }
 	
-	@GetMapping("/branch")
+	@GetMapping("/admin/branch")
     public String branch(Model model) {
 		return "admin/branch";
     }
-	@GetMapping("/customer")
+	@GetMapping("/admin/customer")
     public String customer(Model model) {
 		return "admin/customer";
     }
-	@GetMapping("/category")
+	@GetMapping("/admin/category")
     public String category(Model model) {
 		return "admin/category";
     }

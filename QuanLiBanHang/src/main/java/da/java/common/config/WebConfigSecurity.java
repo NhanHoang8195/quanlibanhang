@@ -15,6 +15,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 
+import da.java.common.enums.RoleName;
+
 @Configuration
 @EnableWebSecurity
 public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
@@ -34,6 +36,11 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
         logger.debug("OUT - configureGlobal()");
     }
     
+   @Bean
+   public MySimpleUrlAuthenticationSuccessHandler mySimpleUrlAuthenticationSuccessHandler() {
+       return new MySimpleUrlAuthenticationSuccessHandler();
+   }
+   
    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -42,13 +49,14 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
             .csrf().csrfTokenRepository(csrfTokenRepository()).and()
             .authorizeRequests()
                 .antMatchers("/about").authenticated()
+                .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().permitAll()
              .and()
             .formLogin()
                 .loginPage("/account/login")
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/")
+                .successHandler(mySimpleUrlAuthenticationSuccessHandler())
                 .failureUrl("/account/login?error")
              .and()
              .logout()
@@ -56,7 +64,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
                  .logoutUrl("/account/logout")
                  .and()
             .rememberMe().tokenValiditySeconds(1000);
-        http.csrf().disable();
+  //      http.csrf().disable();
         logger.debug("OUT - configure(HttpSecurity http)");
     }
 

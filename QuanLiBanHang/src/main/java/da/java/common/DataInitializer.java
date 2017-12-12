@@ -1,16 +1,23 @@
 package da.java.common;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import da.java.common.entities.Account;
 import da.java.common.entities.Branch;
 import da.java.common.entities.Food;
 import da.java.common.entities.Role;
 import da.java.common.enums.RoleName;
+import da.java.common.repository.AccountRepository;
 import da.java.common.repository.BranchRepository;
 import da.java.common.repository.FoodRepository;
 import da.java.common.repository.RoleRepository;
 
 public class DataInitializer {
+    
 	 public void initBranch(BranchRepository branchRepository)
 	 {
 		 List<Branch> branchs = branchRepository.findAll();
@@ -87,15 +94,32 @@ public class DataInitializer {
 	{
 		 List<Role> roles = roleRepository.findAll();
 		 
-		 Role role1 = new Role(RoleName.ADMIN);
+		 Role role1 = new Role(RoleName.ROLE_ADMIN);
 		 if(!roles.contains(role1))
 		 {
 			 roleRepository.save(role1);
 		 }
-		 Role role2 = new Role(RoleName.MEMBER);
+		 Role role2 = new Role(RoleName.ROLE_MEMBER);
 		 if(!roles.contains(role2))
 		 {
 			 roleRepository.save(role2);
 		 }
 	}
+	 
+	 public void initAdminAccount(AccountRepository accountRepo, RoleRepository roleRepo, PasswordEncoder passwordEncoder) {
+	     if(accountRepo.findByEmail("admin@gmail.com") == null) {
+	         Account account = new Account();
+	         Set<Role> roles = new HashSet<>();
+	         roles.add(roleRepo.findByRoleName(RoleName.ROLE_ADMIN));
+	         account.setEmail("admin@gmail.com");
+	         account.setRoles(roles);
+	         account.setPassword(passwordEncoder.encode("123456"));
+	         account.setAddress("None");
+	         account.setRealName("NhanHoang");
+	         account.setPhone("0968005379");
+	         accountRepo.save(account);	     
+	         }
+	     
+	 }
+	 
 }

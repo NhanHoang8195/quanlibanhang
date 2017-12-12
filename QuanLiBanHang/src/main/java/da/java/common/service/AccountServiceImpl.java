@@ -34,7 +34,7 @@ public class AccountServiceImpl implements AccountService{
             }
             Set<Role> roles = new HashSet<>();
             
-            roles.add(roleRepo.findByRoleName(RoleName.MEMBER));
+            roles.add(roleRepo.findByRoleName(RoleName.ROLE_MEMBER));
             account.setRoles(roles);
             account.setPassword(passwordEncoder.encode(account.getPassword()));
             account =  accountRepo.save(account);
