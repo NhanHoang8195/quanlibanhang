@@ -30,8 +30,9 @@
                   <label><input id="remember_me" name = "remember-me" type="checkbox"/>Remember Me?</label> <br/>
 				  <a class="forgot" href="#">Forgot Your Password?</a>
 				  <input type="submit" value="Login" />
-                  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+				  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 			    </form>
+			    
 			   </div>
 			    <div class="col-md-6 login-left">
 			  	 <h3>NEW CUSTOMERS</h3>

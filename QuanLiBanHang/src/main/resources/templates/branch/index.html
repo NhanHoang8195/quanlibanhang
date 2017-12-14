@@ -12,7 +12,7 @@
 				<div th:each="branch,iterStat : ${branchs}" class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
 						<div class="shop-holder">
 							<div class="product-img">
-								<a href="/branch/0" th:href="${branch.branchId}">  
+								<a th:href="${branch.branchId}">  
 									<img width="336" height="265" th:src="${branch.image}" class="img-responsive" alt="item4"/>
 								</a> 
 								<a href="" class="button item_add" style="display: none;"></a>
@@ -20,7 +20,7 @@
 						</div>
 						<div class="shop-content" style="height: 80px;">
 							<div>
-								<a  style="cursor: pointer;" rel="tag" th:text="${branch.name}"></a>
+								<a  th:href="${branch.branchId}" style="cursor: pointer;" rel="tag" th:text="${branch.name}"></a>
 							</div>
 							<span class="amount item_price" th:text="${branch.phone}"></span>
 						</div>

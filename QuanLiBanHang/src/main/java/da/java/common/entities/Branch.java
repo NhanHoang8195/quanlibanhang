@@ -47,6 +47,21 @@ public class Branch implements Serializable {
     /** Images of a branch*/
     @Column(name = "image")
     private String image;
+    
+    @ManyToMany(cascade = { CascadeType.MERGE})
+    @JoinTable(name = "branch_food", 
+    joinColumns = @JoinColumn(name = "branch_id"),
+    inverseJoinColumns = @JoinColumn(name = "food_id"))
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Food> foods;
+
+    public List<Food> getFoods() {
+        return foods;
+    }
+
+    public void setFoods(List<Food> foods) {
+        this.foods = foods;
+    }
 
     public Long getBranchId() {
         return branchId;
@@ -89,15 +104,18 @@ public class Branch implements Serializable {
         this.image = image;
     }
 
-    public Branch(Long branchId, String name, String phone, String address, String image) {
+    
+    
+    public Branch(Long branchId, String name, String phone, String address, String image, List<Food> foods) {
         super();
         this.branchId = branchId;
         this.name = name;
         this.phone = phone;
         this.address = address;
         this.image = image;
+        this.foods = foods;
     }
-    
+
     public Branch(String name, String phone, String address, String image) {
         super();
         this.name = name;
@@ -123,18 +141,4 @@ public class Branch implements Serializable {
         return sameSame;
     }
     
-    @ManyToMany(cascade = {CascadeType.MERGE})
-    @JoinTable(name = "branch_food", 
-    joinColumns = @JoinColumn(name = "branch_id"),
-    inverseJoinColumns = @JoinColumn(name = "food_id"))
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Food> foods;
-
-	public List<Food> getFoods() {
-		return foods;
-	}
-
-	public void setFoods(List<Food> foods) {
-		this.foods = foods;
-	}
 }

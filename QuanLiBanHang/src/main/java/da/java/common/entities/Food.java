@@ -3,7 +3,6 @@ package da.java.common.entities;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -51,10 +50,35 @@ public class Food implements Serializable {
     
     /** Many To Many relationship with product_order table*/
     @JsonIgnore
-    @ManyToMany(cascade=CascadeType.MERGE, mappedBy = "foods")
+    @ManyToMany(mappedBy = "foods")
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Order> orders;
 
+    @JsonIgnore
+    @ManyToMany(mappedBy="foods")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Branch> branches;
+    
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+    
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+    
+    public List<Branch> getBranches() {
+        return branches;
+    }
+    
+    public void setBranches(List<Branch> branches) {
+        this.branches = branches;
+    }
+    
     public Long getFoodId() {
         return this.foodId;
     }
@@ -95,15 +119,18 @@ public class Food implements Serializable {
         this.image = image;
     }
 
-    public Food(Long foodId, String foodName, Long price, String image, List<Order> orders) {
+    public Food(Long foodId, String foodName, Long price, String image, List<Order> orders, List<Branch> branches,
+            Category category) {
         super();
         this.foodId = foodId;
         this.foodName = foodName;
         this.price = price;
         this.image = image;
         this.orders = orders;
+        this.branches = branches;
+        this.category = category;
     }
-    
+
     public Food(String foodName, Long price, String image) {
         super();
         this.foodName = foodName;
@@ -128,29 +155,6 @@ public class Food implements Serializable {
         return sameSame;
     }
     
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
-
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
 	
-  @JsonIgnore
-    @ManyToMany(cascade=CascadeType.MERGE, mappedBy = "foods")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Branch> branches;
-
-	public List<Branch> getBranches() {
-		return branches;
-	}
-	
-	public void setBranches(List<Branch> branches) {
-		this.branches = branches;
-	}
   
 }

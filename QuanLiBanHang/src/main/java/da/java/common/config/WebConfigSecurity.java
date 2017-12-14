@@ -15,8 +15,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 
-import da.java.common.enums.RoleName;
-
 @Configuration
 @EnableWebSecurity
 public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
@@ -64,7 +62,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
                  .logoutUrl("/account/logout")
                  .and()
             .rememberMe().tokenValiditySeconds(1000);
-  //      http.csrf().disable();
+      //  http.csrf().disable();
         logger.debug("OUT - configure(HttpSecurity http)");
     }
 

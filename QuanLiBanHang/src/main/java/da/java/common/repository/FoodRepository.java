@@ -24,7 +24,8 @@ public interface FoodRepository extends JpaRepository<Food, Long> {
     public List<Food> findAllByFoodIdInOrderByFoodIdDesc(List<Long> ids);
     
     /**
-     * 
+     * Seach food by name ignore case (Upper or lower)
      */
     public List<Food> findByFoodNameContainingIgnoreCase(String name);
+    
 }
