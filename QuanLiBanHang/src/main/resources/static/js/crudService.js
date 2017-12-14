@@ -1,5 +1,9 @@
 function crudFunction(scope, http)
 {
+	http.defaults.headers.post["X-CSRF-TOKEN"] = $("#csrf")[0].value;
+    http.defaults.headers.put["X-CSRF-TOKEN"] = $("#csrf")[0].value;
+	http.defaults.headers.common["X-CSRF-TOKEN"] = $("#csrf")[0].value;
+	
 	$injector = angular.injector(['ng']);
 	q = $injector.get('$q');
 	deferred = q.defer();
