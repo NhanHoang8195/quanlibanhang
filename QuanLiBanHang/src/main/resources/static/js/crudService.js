@@ -168,6 +168,10 @@ function getModelFromReponse(response){
 }
 function removeExtendedProperties(model){
 	var newModel = JSON.parse(JSON.stringify(model));
+	for(var propertyName in model) {
+		if(newModel[propertyName] instanceof Array)
+			newModel[propertyName] = undefined;
+	}
 	for(var propertyName in model._links) {
 		newModel[propertyName] = undefined;
 	}
