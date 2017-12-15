@@ -48,6 +48,10 @@ public class Food implements Serializable {
     @Column(name = "image")
     private String image;
     
+    /** Description*/
+    @Column(name = "description")
+    private String description;
+    
     /** Many To Many relationship with product_order table*/
     @JsonIgnore
     @ManyToMany(mappedBy = "foods")
@@ -60,8 +64,16 @@ public class Food implements Serializable {
     private List<Branch> branches;
     
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name="category_id")
     private Category category;
+    
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Category getCategory() {
         return category;
@@ -119,13 +131,16 @@ public class Food implements Serializable {
         this.image = image;
     }
 
-    public Food(Long foodId, String foodName, Long price, String image, List<Order> orders, List<Branch> branches,
-            Category category) {
+   
+
+    public Food(Long foodId, String foodName, Long price, String image, String description, List<Order> orders,
+            List<Branch> branches, Category category) {
         super();
         this.foodId = foodId;
         this.foodName = foodName;
         this.price = price;
         this.image = image;
+        this.description = description;
         this.orders = orders;
         this.branches = branches;
         this.category = category;

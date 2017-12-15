@@ -31,8 +31,8 @@ public class Category implements Serializable {
     @Column(name = "name")
     private String name;
     
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    @LazyCollection(LazyCollectionOption.TRUE)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval=true)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Food> foods;
 
     public Long getCategoryId() {

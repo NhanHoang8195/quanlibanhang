@@ -40,14 +40,12 @@
                                      <span  sec:authentication="name"></span><span class="caret"></span>
                                   </button>
                                   <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
+                                    <li><a href="#">Account</a></li>
+                                    <li><a href="#">Setting</a></li>
+                                    <li><a href="#">Help</a></li>
+                                    <li><a th:href="@{/account/logout}"> Logout</a></li>
                                   </ul>
                                 </div>
-                                <a style="width: 192px" class="btn btn-primary" th:href="@{/account/logout}"> Logout</a>
                             </div>
                             <div sec:authorize="isAnonymous()">
                                 <a class="btn btn-primary" th:href="@{/account/login}" th:text="Login"></a>

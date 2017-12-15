@@ -7,4 +7,5 @@ import da.java.common.entities.Branch;
 
 @RepositoryRestResource
 public interface BranchRepository extends JpaRepository<Branch, Long> {
+    
 }

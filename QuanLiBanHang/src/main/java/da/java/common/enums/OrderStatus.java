@@ -10,8 +10,10 @@ package da.java.common.enums;
 public enum OrderStatus {
     /**New order*/
     NEW,
-    /**Cancel order*/
+    /**Canceled order*/
     CANCLE,
     /**Order done*/
-    OLD
+    OLD,
+    /**Order Processing*/
+    PROCESSING
 }

@@ -19,8 +19,8 @@ public class HomeController {
     
 	@GetMapping("/")
     public String index(Model model) {
-	    List<Food> topSellFood = foodService.getBestSell();
-	    model.addAttribute("topSell", topSellFood);
+	    List<Food> topSell = foodService.getBestSell();
+	    model.addAttribute("topSell", topSell);
 	    List<Food> listFood = foodService.getFoodList();
 	    model.addAttribute("listFood", listFood);
 	    

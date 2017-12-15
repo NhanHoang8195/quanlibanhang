@@ -38,7 +38,7 @@ public class OrderServiceImpl implements OrderService {
             logger.error(e.getMessage());
             return null;
         } finally {
-            logger.debug("OUT - save food");
+            logger.debug("OUT - save Order");
         }
     }
 

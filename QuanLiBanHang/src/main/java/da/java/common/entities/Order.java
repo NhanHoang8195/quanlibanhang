@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.LazyCollection;
@@ -23,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import da.java.common.enums.OrderStatus;
+import da.java.common.enums.TransactionalPerson;
 
 @Entity
 @Table(name = "product_order")
@@ -48,6 +50,24 @@ public class Order implements Serializable {
     @Column(name = "address", nullable = false)
     private String address;
     
+    /** Total money of a bill*/
+    @Column(name="total_money")
+    private Integer totalMoney;
+    
+    /** Date done order*/
+    @Column(name="date_order")
+    private String dateOrder; 
+    
+    /** Type of order*/
+    @Column(name = "transactional_person")
+    @Enumerated(EnumType.STRING)
+    private TransactionalPerson transactionalPerson;
+    
+    @ManyToOne
+    @JoinColumn(name="branch_id")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private Branch branch;
+    
     /**Status orders*/
     @Column(name = "order_status")
     @Enumerated(EnumType.STRING)
@@ -60,6 +80,22 @@ public class Order implements Serializable {
     inverseJoinColumns = @JoinColumn(name = "food_id"))
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Food> foods;
+    
+    public Integer getTotalMoney() {
+        return totalMoney;
+    }
+
+    public void setTotalMoney(Integer totalMoney) {
+        this.totalMoney = totalMoney;
+    }
+
+    public Branch getBranch() {
+        return branch;
+    }
+
+    public void setBranch(Branch branch) {
+        this.branch = branch;
+    }
 
     public Long getProductOrderId() {
         return productOrderId;
@@ -101,11 +137,14 @@ public class Order implements Serializable {
         this.orderStatus = orderStatus;
     }
 
-    public Order(Long productOrderId, String phone, String address, OrderStatus orderStatus, List<Food> foods) {
+    public Order(Long productOrderId, String phone, String address, Integer totalMoney, Branch branch,
+            OrderStatus orderStatus, List<Food> foods) {
         super();
         this.productOrderId = productOrderId;
         this.phone = phone;
         this.address = address;
+        this.totalMoney = totalMoney;
+        this.branch = branch;
         this.orderStatus = orderStatus;
         this.foods = foods;
     }

@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.LazyCollection;
@@ -48,12 +49,25 @@ public class Branch implements Serializable {
     @Column(name = "image")
     private String image;
     
+    /** Order List*/
+    @OneToMany(cascade=CascadeType.ALL, mappedBy="branch", orphanRemoval=true)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Order> orderOfBranch;
+    
     @ManyToMany(cascade = { CascadeType.MERGE})
     @JoinTable(name = "branch_food", 
     joinColumns = @JoinColumn(name = "branch_id"),
     inverseJoinColumns = @JoinColumn(name = "food_id"))
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Food> foods;
+    
+    public List<Order> getOrderOfBranch() {
+        return orderOfBranch;
+    }
+
+    public void setOrderOfBranch(List<Order> orderOfBranch) {
+        this.orderOfBranch = orderOfBranch;
+    }
 
     public List<Food> getFoods() {
         return foods;
@@ -104,15 +118,15 @@ public class Branch implements Serializable {
         this.image = image;
     }
 
-    
-    
-    public Branch(Long branchId, String name, String phone, String address, String image, List<Food> foods) {
+    public Branch(Long branchId, String name, String phone, String address, String image, List<Order> orderOfBranch,
+            List<Food> foods) {
         super();
         this.branchId = branchId;
         this.name = name;
         this.phone = phone;
         this.address = address;
         this.image = image;
+        this.orderOfBranch = orderOfBranch;
         this.foods = foods;
     }
 
