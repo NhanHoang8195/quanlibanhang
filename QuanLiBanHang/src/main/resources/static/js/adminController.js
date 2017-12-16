@@ -3,7 +3,11 @@ $(document).ready(function(c) {
     var element = $('ul.side-nav a').filter(function() {
     	return this.href == url || (url.href.indexOf(this.href) == 0 && this.pathname != '/') ; 
     }).parent().addClass('active');
-	
+    //#4a433f
+    var element = $('ul.side-nav li li a').filter(function() {
+    	return this.href == url || (url.href.indexOf(this.href) == 0 && this.pathname != '/') ; 
+    }).parent().css("background-color", "#4a433f");
+    
     if (element.is('li')) { 
          element.addClass('active').parent().parent('li').addClass('active')
      }
@@ -124,6 +128,14 @@ app.controller('orderController', function($scope, $http) {
 	defineBaseFunction(scope, http);
 	
 	scope.get();
+	scope.afterGet = function(models){
+		scope.newStatusModels = scope.models.filter(function(item) {return item.orderStatus=="NEW"});
+		scope.processingStatusModels = scope.models.filter(function(item) {return item.orderStatus=="PROCESSING"});
+	};
+	scope.beforePost = function(model){
+		model.orderStatus = 'NEW';
+	};
+	
 	scope.get("branches", function(data){
 		scope.branches = data;
 	});	

@@ -23,21 +23,34 @@ function crudFunction(scope, http)
 		http.get(tempUrl)
 	    .then(function(response) {
 	    	var models = getModelFromReponse(response);
+	    	var self = {}; self.count = 0; self.tempCount = 0;
 	    	
-	    	if(callback != undefined) {
-	    		callback(models);
-	    		return;
-	    	}
+	    	self.callback = function(){
+	    		if(callback != undefined) {
+		    		callback(models);
+		    		return;
+		    	}
+	    		
+	    		scope.models = models;
+	    		if(scope.afterGet !=undefined){
+	    			scope.afterGet(models);
+	    		}
+	    	};
+	    	
 	    	for(var i=0;i<models.length;i++){
-	    		scope.getExtendedProperties(models[i], function(){});
+	    		self.count++;
+	    		scope.getExtendedProperties(models[i], function(){
+	    			tempCallback(self);
+	    		});
 	    	}
-	    	
-	        scope.models = models;
 	    });
 	}
 	
 	scope.post = function()
 	{
+		if(scope.beforePost != undefined){
+			scope.beforePost(scope.currentModel);
+		}
 		http.post(url, removeExtendedProperties(scope.currentModel))
 		.then(function(response) {
 			var model = getModelFromReponse(response);
@@ -48,7 +61,7 @@ function crudFunction(scope, http)
 	}
 	scope.getExtendedProperties = function(model, callback){
 		var ExtendedProperties = model._links;
-		var self = this; self.count = 0; self.callback = callback; self.tempCount = 0;
+		var self = {}; self.count = 0; self.callback = callback; self.tempCount = 0;
 		
 		for(var propertyName in ExtendedProperties) {
 			if(propertyName == "self"){
@@ -74,7 +87,7 @@ function crudFunction(scope, http)
 	}
 	scope.putExtendedProperties = function(model, callback){
 		var ExtendedProperties = model._links;
-		var self = this; self.count = 0; self.callback = callback; self.tempCount = 0;
+		var self = {}; self.count = 0; self.callback = callback; self.tempCount = 0;
 		
 		for(var propertyName in ExtendedProperties) {
 			if(scope.currentModel[propertyName] == undefined || propertyName == "self"){
@@ -127,7 +140,7 @@ function crudFunction(scope, http)
 	}
 	scope.deleteExtendedProperties = function(model, callback){
 		var ExtendedProperties = model._links;
-		var self = this; self.count = 0; self.callback = callback; self.tempCount = 0;
+		var self = {}; self.count = 0; self.callback = callback; self.tempCount = 0;
 		
 		for(var propertyName in ExtendedProperties) {
 			if(propertyName == "self" || ExtendedProperties[propertyName].href == ExtendedProperties["self"].href){
@@ -195,6 +208,8 @@ function removeExtendedProperties(model){
 function tempCallback(self){
 	self.tempCount++;
 	if(self.tempCount == self.count){
-		self.callback();
+		if(self.callback!=undefined){
+			self.callback();
+		}
 	}
 }
