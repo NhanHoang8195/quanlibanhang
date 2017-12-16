@@ -61,6 +61,13 @@ function defineBaseFunction(scope, http){
     };
     
 	crudFunction(scope, http);
+	
+	setInterval(function(){
+		if($('.modal').hasClass('in')){ 
+			return;
+		}
+		scope.get();
+	}, 5000);
 }
 app.controller('foodController', function($scope, $http) {
 	var scope = $scope; var http = $http;
@@ -141,7 +148,7 @@ app.controller('categoryController', function($scope, $http) {
 	
 	scope.get();
 });
-app.controller('orderController', function($scope, $http) {
+app.controller('orderSwitchboardController', function($scope, $http) {
 	var scope = $scope; var http = $http;
 	scope.name = "orders";
 	scope.singularName = "order";
@@ -164,3 +171,28 @@ app.controller('orderController', function($scope, $http) {
 		scope.foods = data;
 	});	
 });
+
+app.controller('orderBranchController', function($scope, $http) {
+	var scope = $scope; var http = $http;
+	scope.name = "orders";
+	scope.singularName = "order";
+	
+	defineBaseFunction(scope, http);
+	
+	scope.get();
+	scope.afterGet = function(models){
+		scope.processingStatusModels = scope.models.filter(function(item) {return item.orderStatus=="PROCESSING"});
+		scope.cookingStatusModels = scope.models.filter(function(item) {return item.orderStatus=="COOKING"});
+	};
+	scope.beforePost = function(model){
+		model.orderStatus = 'PROCESSING';
+	};
+	
+	scope.get("branches", function(data){
+		scope.branches = data;
+	});	
+	scope.get("foods", function(data){
+		scope.foods = data;
+	});
+});
+

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="admin/layout :: head"></head>
 <body>
-	<div id="wrapper" ng-app="myApp" ng-controller="orderController">
+	<div id="wrapper" ng-app="myApp" ng-controller="orderBranchController">
 		<nav th:replace="admin/layout :: navigation"></nav>
 
 		<div id="page-wrapper">
@@ -16,9 +16,9 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12" style="margin-bottom: 10px">
-						<ol class="breadcrumb" style="background-color: #ff8888">
+						<ol class="breadcrumb" style="background-color: #20ef43">
                             <li class="active">
-                                <i class="glyphicon glyphicon-flash"></i> NEW
+                                <i class="glyphicon glyphicon-refresh"></i> PROCESSING
                             </li>
                         </ol>
 						<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit" ng-click="emptyCurrentModel();currentModel.foods=[]">
@@ -30,29 +30,19 @@
 									<th>Order Number</th>
 									<th>Phone</th>
 									<th>Address</th>
-									<th>Branch</th>
+									<th>Move to kitchen</th>
 									<th>Edit</th>
 									<th>Delete</th>
 								</thead>
 								<tbody>
-									<tr ng-repeat="model in newStatusModels  | orderBy:'self'">
+									<tr ng-repeat="model in processingStatusModels  | orderBy:'self'">
 										<td ng-bind="model.self">Mohsin</td>
 										<td ng-bind="model.phone">0967032494</td>
 										<td ng-bind="model.address"></td>
 										<td>
-											<div class="dropdown">
-											  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-											  			{{model.branch.name}}
-											  <span class="caret"></span></button>
-											  <button class="btn btn-primary btn-xs" data-title="Move" ng-click="setCurrentModel(model);currentModel.orderStatus='PROCESSING';put()">
+											  <button class="btn btn-primary btn-xs" data-title="Move" ng-click="setCurrentModel(model);currentModel.orderStatus='COOKING';put()">
 													<span class="glyphicon glyphicon-arrow-right"></span>
 												</button>
-											  <ul class="dropdown-menu">
-											    <li ng-repeat="branch in branches" ng-click="model.branch = branch">
-											    	<a style="cursor: pointer;">{{branch.name}}</a>
-											    </li>
-											  </ul>
-											</div>
 										</td>
 										<td><p data-placement="top" data-toggle="tooltip"
 												title="Edit">
@@ -79,29 +69,31 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-12">
-						<ol class="breadcrumb" style="background-color: #20ef43">
+					<div class="col-md-12" style="margin-bottom: 10px">
+						<ol class="breadcrumb" style="background-color: #fdff65">
                             <li class="active">
-                                <i class="glyphicon glyphicon-refresh"></i> PROCESSING
+                                <i class="glyphicon glyphicon-fire"></i> COOKING
                             </li>
                         </ol>
-                        <div class="table-responsive">
+						<div class="table-responsive">
 							<table id="mytable" class="table table-bordred table-striped">
 								<thead>
 									<th>Order Number</th>
 									<th>Phone</th>
 									<th>Address</th>
-									<th>Branch</th>
+									<th>Done</th>
 									<th>Edit</th>
 									<th>Delete</th>
 								</thead>
 								<tbody>
-									<tr ng-repeat="model in processingStatusModels  | orderBy:'self'">
+									<tr ng-repeat="model in cookingStatusModels  | orderBy:'self'">
 										<td ng-bind="model.self">Mohsin</td>
 										<td ng-bind="model.phone">0967032494</td>
 										<td ng-bind="model.address"></td>
-										<td ng-bind="model.branch.name">
-											
+										<td>
+											  <button class="btn btn-primary btn-xs" style="background-color: green;" data-title="Move" ng-click="setCurrentModel(model);currentModel.orderStatus='OLD';put()">
+													<span class="glyphicon glyphicon-ok"></span>
+												</button>
 										</td>
 										<td><p data-placement="top" data-toggle="tooltip"
 												title="Edit">
@@ -124,6 +116,7 @@
 							<div class="clearfix"></div>
 							
 						</div>
+
 					</div>
 				</div>
 			</div>
