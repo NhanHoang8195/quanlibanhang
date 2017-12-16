@@ -35,18 +35,15 @@ public class Account implements Serializable {
     
     /** The username*/
     @Email
-    @NotEmpty
-    @Column(name = "email", nullable = false, updatable=false, unique=true)
+    @Column(name = "email", unique=true)
     private String email;
     
     /** The password*/
-    @NotEmpty
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
     private String password;
     
     /** Phone number of an user*/
-    @NotEmpty
-    @Column(name = "phone", nullable = false, unique=true)
+    @Column(name = "phone", unique=true)
     private String phone;
     
     /** Address of an user*/
@@ -54,8 +51,7 @@ public class Account implements Serializable {
     private String address;
     
     /** Real name of an user*/
-    @NotEmpty
-    @Column(name = "real_name", nullable = false)
+    @Column(name = "real_name")
     private String realName;
     
     /** RoleId of an user*/

@@ -26,6 +26,10 @@ public class AdminController {
     public String customer(Model model) {
 		return "admin/customer";
     }
+	@GetMapping("/admin/staff")
+    public String staff(Model model) {
+		return "admin/staff";
+    }
 	@GetMapping("/admin/category")
     public String category(Model model) {
 		return "admin/category";

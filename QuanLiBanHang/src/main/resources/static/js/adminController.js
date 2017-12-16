@@ -110,6 +110,27 @@ app.controller('customerController', function($scope, $http) {
 	defineBaseFunction(scope, http);
 	
 	scope.get();
+	scope.afterGet = function(models){
+		scope.models = models.filter(function(item) {return item.roles[0].roleName =="ROLE_MEMBER"});
+	};
+	scope.beforePost = function(model){
+		model.roles = scope.roles.filter(function(item) {return item.roleName =="ROLE_MEMBER"});
+	};
+	scope.get("roles", function(models){
+		scope.roles = models;
+	});
+});
+app.controller('staffController', function($scope, $http) {
+	var scope = $scope; var http = $http;
+	scope.name = "accounts";
+	scope.singularName = "account";
+	
+	defineBaseFunction(scope, http);
+	
+	scope.get();
+	scope.afterGet = function(models){
+		scope.models = models.filter(function(item) {return item.roles[0].roleName !="ROLE_MEMBER"});
+	};
 });
 app.controller('categoryController', function($scope, $http) {
 	var scope = $scope; var http = $http;

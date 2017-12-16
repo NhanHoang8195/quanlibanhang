@@ -43,11 +43,11 @@ public class Order implements Serializable {
     private Long productOrderId;
     
     /** Phone number of an customer will receive product*/
-    @Column(name = "phone", nullable = false)
+    @Column(name = "phone")
     private String phone;
     
     /** Address for receive product*/
-    @Column(name = "address", nullable = false)
+    @Column(name = "address")
     private String address;
     
     /** Total money of a bill*/

@@ -37,11 +37,11 @@ public class Food implements Serializable {
     private Long foodId;
     
     /** Name of the food*/
-    @Column(name = "food_name", nullable = false, unique = true)
+    @Column(name = "food_name", unique = true)
     private String foodName;
 
     /** Price of the food*/
-    @Column(name = "price", nullable = false)
+    @Column(name = "price")
     private Long price;
     
     /** Image of the food*/
