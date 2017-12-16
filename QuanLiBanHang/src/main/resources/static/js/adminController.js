@@ -61,6 +61,8 @@ function defineBaseFunction(scope, http){
 app.controller('foodController', function($scope, $http) {
 	var scope = $scope; var http = $http;
 	scope.name = "foods";
+	scope.singularName = "food";
+	
 	defineBaseFunction(scope, http);
 	
 	scope.get();
@@ -71,6 +73,7 @@ app.controller('foodController', function($scope, $http) {
 app.controller('branchController', function($scope, $http) {
 	var scope = $scope; var http = $http;
 	scope.name = "branches"
+	scope.singularName = "branch";
 	
 	defineBaseFunction(scope, http);
 
@@ -97,7 +100,9 @@ app.controller('branchController', function($scope, $http) {
 });
 app.controller('customerController', function($scope, $http) {
 	var scope = $scope; var http = $http;
-	scope.name = "accounts"
+	scope.name = "accounts";
+	scope.singularName = "account";
+	
 	defineBaseFunction(scope, http);
 	
 	scope.get();
