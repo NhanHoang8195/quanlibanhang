@@ -104,6 +104,10 @@ function crudFunction(scope, http)
 			http.put(putPropertyUrl, scope.currentModel[propertyName]._links.self.href, configForAssociation)
 			.then(function(response) {tempCallback(self);}, function(response) {tempCallback(self);})
 		}
+		
+		if(self.count == 0){
+			callback();
+		}
 	}
 	
 	scope.put = function(){

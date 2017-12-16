@@ -14,6 +14,8 @@ public enum OrderStatus {
     CANCLE,
     /**Order done*/
     OLD,
+    /**Order in kitchen*/
+    COOKING,
     /**Order Processing*/
     PROCESSING
 }

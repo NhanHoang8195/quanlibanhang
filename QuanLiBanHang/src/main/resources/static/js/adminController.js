@@ -95,7 +95,7 @@ app.controller('branchController', function($scope, $http) {
 				return true;
 			});
 	    }, true);
-		
+
 	});	
 });
 app.controller('customerController', function($scope, $http) {
@@ -116,4 +116,18 @@ app.controller('categoryController', function($scope, $http) {
 	
 	scope.get();
 });
-
+app.controller('orderController', function($scope, $http) {
+	var scope = $scope; var http = $http;
+	scope.name = "orders";
+	scope.singularName = "order";
+	
+	defineBaseFunction(scope, http);
+	
+	scope.get();
+	scope.get("branches", function(data){
+		scope.branches = data;
+	});	
+	scope.get("foods", function(data){
+		scope.foods = data;
+	});	
+});

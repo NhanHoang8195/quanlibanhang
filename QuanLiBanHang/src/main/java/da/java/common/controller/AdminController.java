@@ -30,5 +30,13 @@ public class AdminController {
     public String category(Model model) {
 		return "admin/category";
     }
+	@GetMapping("/admin/orderSwitchboard")
+    public String orderSwitchboard(Model model) {
+		return "admin/orderSwitchboard";
+    }
+	@GetMapping("/admin/orderBranch")
+    public String orderBranch(Model model) {
+		return "admin/orderBranch";
+    }
 	
 }
