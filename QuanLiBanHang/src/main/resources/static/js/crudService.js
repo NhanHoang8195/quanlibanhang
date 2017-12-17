@@ -56,7 +56,7 @@ function crudFunction(scope, http)
 	    });
 	}
 	
-	scope.post = function()
+	scope.post = function(callback)
 	{
 		if(scope.beforePost != undefined){
 			scope.beforePost(scope.currentModel);
@@ -65,6 +65,10 @@ function crudFunction(scope, http)
 		.then(function(response) {
 			var model = getModelFromReponse(response);
 			scope.putExtendedProperties(model, function(){
+				if(callback != undefined){
+					callback();
+					return;
+				}
 				scope.get();
 			});
 		})
@@ -133,9 +137,9 @@ function crudFunction(scope, http)
 		}
 	}
 	
-	scope.put = function(){
+	scope.put = function(callback){
 		if(scope.currentModel._links == undefined){
-			scope.post();
+			scope.post(callback);
 			return;
 		}
 		
@@ -144,6 +148,10 @@ function crudFunction(scope, http)
 		http.put(putUrl, removeExtendedProperties(scope.currentModel))
 		.then(function(response) {
 			scope.putExtendedProperties(scope.currentModel, function(){
+				if(callback != undefined){
+					callback();
+					return;
+				}
 				scope.get();
 			});
 		})

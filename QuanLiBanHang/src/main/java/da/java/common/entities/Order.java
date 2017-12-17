@@ -58,7 +58,15 @@ public class Order implements Serializable {
     @Column(name="date_order")
     private String dateOrder; 
     
-    /** Type of order*/
+    public String getDateOrder() {
+		return dateOrder;
+	}
+
+	public void setDateOrder(String dateOrder) {
+		this.dateOrder = dateOrder;
+	}
+
+	/** Type of order*/
     @Column(name = "transactional_person")
     @Enumerated(EnumType.STRING)
     private TransactionalPerson transactionalPerson;

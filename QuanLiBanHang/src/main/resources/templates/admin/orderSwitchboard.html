@@ -28,6 +28,7 @@
 							<table id="mytable" class="table table-bordred table-striped">
 								<thead>
 									<th>Order Number</th>
+									<th>Date</th>
 									<th>Phone</th>
 									<th>Address</th>
 									<th>Branch</th>
@@ -37,14 +38,15 @@
 								<tbody>
 									<tr ng-repeat="model in newStatusModels  | orderBy:'self'">
 										<td ng-bind="model.self">Mohsin</td>
-										<td ng-bind="model.phone">0967032494</td>
+										<td ng-bind="model.dateOrder"></td>
+										<td ng-bind="model.phone"></td>
 										<td ng-bind="model.address"></td>
 										<td>
 											<div class="dropdown">
 											  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
 											  			{{model.branch.name}}
 											  <span class="caret"></span></button>
-											  <button class="btn btn-primary btn-xs" data-title="Move" ng-click="setCurrentModel(model);currentModel.orderStatus='PROCESSING';put()">
+											  <button ng-disabled="model.branch == undefined" class="btn btn-primary btn-xs" data-title="Move" ng-click="setCurrentModel(model);currentModel.orderStatus='PROCESSING';put()">
 													<span class="glyphicon glyphicon-arrow-right"></span>
 												</button>
 											  <ul class="dropdown-menu">
@@ -89,6 +91,7 @@
 							<table id="mytable" class="table table-bordred table-striped">
 								<thead>
 									<th>Order Number</th>
+									<th>Date</th>
 									<th>Phone</th>
 									<th>Address</th>
 									<th>Branch</th>
@@ -98,6 +101,7 @@
 								<tbody>
 									<tr ng-repeat="model in processingStatusModels  | orderBy:'self'">
 										<td ng-bind="model.self">Mohsin</td>
+										<td ng-bind="model.dateOrder">Mohsin</td>
 										<td ng-bind="model.phone">0967032494</td>
 										<td ng-bind="model.address"></td>
 										<td ng-bind="model.branch.name">

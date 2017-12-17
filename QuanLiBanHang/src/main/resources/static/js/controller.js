@@ -23,9 +23,13 @@ app.controller('checkoutController', function($scope, $http) {
     		$scope.currentModel.phone = $scope.account.phone;
     		$scope.currentModel.address = $scope.account.address;
     	}
+    	$scope.currentModel.dateOrder = new Date().toLocaleString();
     }
-    $scope.afterGet = function(){
-    	$scope.removeCart();
+    
+    $scope.save = function(){
+    	$scope.put(function(){
+        	$scope.removeCart();
+    	});
     }
     
     var email = $("#authenticationEmail")[0];
