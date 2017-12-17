@@ -6,6 +6,7 @@
 
 <div class="container" ng-app="myApp" ng-controller="checkoutController">
 	<div class="check">	 
+		<input type="hidden" id="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 		<div class="col-md-9 cart-items">
 			 <h1>Giỏ hàng ({{cart.items.length}})</h1>
 			 <div class="cart-header" ng-repeat="item in cart.items">
@@ -36,7 +37,7 @@
 			 <div class="price-details">
 				 <h3>Chi tiết giá tiền</h3>
 				 <span>Tổng tiền</span>
-				 <span class="total1" ng-bind="cart.total">6200.00</span>
+				 <span class="total1" ng-bind="cart.total"></span>
 				 <span>Giảm giá</span>
 				 <span class="total1">---</span>
 				 <span>Tiền vận chuyển</span>
@@ -51,9 +52,41 @@
 			
 			 
 			 <div class="clearfix"></div>
-			 <a class="order" href="#">Đặt hàng</a>
+			 <a ng-if="cart.items.length>0" class="order" href="#" data-toggle="modal" data-target="#edit" ng-click="setCurrentModel();">Đặt hàng</a>
 		</div>
 	 </div>
+	 <div class="modal fade" id="edit" tabindex="-1" role="dialog"
+			aria-labelledby="edit" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">
+							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+						</button>
+						<h4 class="modal-title custom_align" id="Heading">Xác nhận thông tin giao hàng</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							Điện thoại: 
+							<input class="form-control " type="text" ng-model="currentModel.phone" />
+						</div>
+						<div class="form-group">
+							Địa chỉ: 
+							<input class="form-control " type="text" ng-model="currentModel.address" />
+						</div>
+					</div>
+					<div class="modal-footer ">
+						<button type="button" class="btn btn-warning btn-lg"
+							style="width: 100%;" ng-click="put()" data-dismiss="modal">
+							<span class="glyphicon glyphicon-ok-sign" ></span> OK
+						</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
 </div>
 
 <div th:replace="shared/footer :: footer"></div>

@@ -63,7 +63,7 @@ function defineBaseFunction(scope, http){
 	crudFunction(scope, http);
 	
 	setInterval(function(){
-		if($('.modal').hasClass('in')){ 
+		if($('.modal').hasClass('in') || $(".dropdown-menu").is(":visible")){ 
 			return;
 		}
 		scope.get();

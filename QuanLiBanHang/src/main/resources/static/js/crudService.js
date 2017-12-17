@@ -14,35 +14,45 @@ function crudFunction(scope, http)
 			'Content-Type': 'text/uri-list'
 	    }
 	};
-	
-	scope.get = function(name, callback)
-	{
+	scope.get = function(name, callback){
 		scope.currentModel = {};
 		var tempName = name == undefined ? scope.name:name;
 		var tempUrl = "/"+ tempName + "/"; 
-		http.get(tempUrl)
+		scope.getByUrl(tempUrl, callback);
+	}
+	scope.getByUrl = function(url, callback)
+	{
+		http.get(url)
 	    .then(function(response) {
-	    	var models = getModelFromReponse(response);
-	    	var self = {}; self.count = 0; self.tempCount = 0;
-	    	
-	    	self.callback = function(){
-	    		if(callback != undefined) {
-		    		callback(models);
-		    		return;
+	    	var model = getModelFromReponse(response);
+	    	if(model instanceof Array){
+	    		var models = model;
+	    		var self = {}; self.count = 0; self.tempCount = 0;
+		    	
+		    	self.callback = function(){
+		    		if(callback != undefined) {
+			    		callback(models);
+			    		return;
+			    	}
+		    		
+		    		scope.models = models;
+		    		if(scope.afterGet !=undefined){
+		    			scope.afterGet(models);
+		    		}
+		    	};
+		    	
+		    	for(var i=0;i<models.length;i++){
+		    		self.count++;
+		    		scope.getExtendedProperties(models[i], function(){
+		    			tempCallback(self);
+		    		});
 		    	}
-	    		
-	    		scope.models = models;
-	    		if(scope.afterGet !=undefined){
-	    			scope.afterGet(models);
-	    		}
-	    	};
-	    	
-	    	for(var i=0;i<models.length;i++){
-	    		self.count++;
-	    		scope.getExtendedProperties(models[i], function(){
-	    			tempCallback(self);
+	    	}else{
+	    		scope.getExtendedProperties(model, function(){
+	    			callback(model);
 	    		});
 	    	}
+	    	
 	    });
 	}
 	
@@ -182,6 +192,10 @@ function crudFunction(scope, http)
 				scope.get();
 			})
 		})
+	}
+	
+	scope.findByEmail = function(email, callback){
+		scope.getByUrl("/accounts/search/findByEmail?email=" + email, callback);
 	}
 }
 
