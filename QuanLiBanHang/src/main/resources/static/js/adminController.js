@@ -159,6 +159,7 @@ app.controller('orderSwitchboardController', function($scope, $http) {
 	scope.afterGet = function(models){
 		scope.newStatusModels = scope.models.filter(function(item) {return item.orderStatus=="NEW"});
 		scope.processingStatusModels = scope.models.filter(function(item) {return item.orderStatus=="PROCESSING"});
+		baseOrder(scope);
 	};
 	scope.beforePost = function(model){
 		model.orderStatus = 'NEW';
@@ -183,6 +184,7 @@ app.controller('orderBranchController', function($scope, $http) {
 	scope.afterGet = function(models){
 		scope.processingStatusModels = scope.models.filter(function(item) {return item.orderStatus=="PROCESSING"});
 		scope.cookingStatusModels = scope.models.filter(function(item) {return item.orderStatus=="COOKING"});
+		baseOrder(scope);
 	};
 	scope.beforePost = function(model){
 		model.orderStatus = 'PROCESSING';
@@ -195,4 +197,43 @@ app.controller('orderBranchController', function($scope, $http) {
 		scope.foods = data;
 	});
 });
+function baseOrder(scope){
+	scope.$watch('foods', function() {
+		scope.filteredFoods = scope.foods;
+    }, true);
+	scope.$watch('suggestion', function() {
+		if(scope.foods == undefined){
+			scope.suggestion = scope.suggestion?scope.suggestion:"";
+			return;
+		}
+		$("#suggestion").parent().parent().addClass('open');
+		scope.suggestion = scope.suggestion?scope.suggestion:"";
+		scope.filteredFoods = scope.foods.filter(function(item){
+			return item.foodName.toLowerCase().startsWith(scope.suggestion.toLowerCase());
+		})
+    }, true);
+	scope.emptySuggestion = function(){
+		scope.suggestion = ""; $("#suggestion").focus();
+	}
+	scope.focusSuggestion = function(){
+		$("#suggestion").focus();$("#suggestion").parent().parent().addClass('open');
+	}
+	scope.blurSuggestion = function(){
+		setTimeout(function(){
+			$("#suggestion").parent().parent().removeClass('open');
+		}, 200)
+	}
+	scope.$watch('currentModel.foods', function() {
+		if(scope.currentModel.foods == undefined){
+			scope.currentModel.foods = []; scope.currentModel.totalMoney = 0;
+			return;
+		}
+		var money = 0;
+		for(var index in scope.currentModel.foods)
+		{
+			money = money + scope.currentModel.foods[index].price;
+		}
+		scope.currentModel.totalMoney = money;
+    }, true);
+}
 

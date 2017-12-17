@@ -155,24 +155,23 @@
 							<input class="form-control " type="text" ng-model="currentModel.address" />
 						</div>
 						<div class="form-group">
+							Total Money: 
+							<input disabled="" class="form-control " type="text" ng-model="currentModel.totalMoney"/>
+						</div>
+						<div class="form-group">
 							Food:
 							<div class="dropdown" ng-repeat="food in currentModel.foods track by $index" style="margin-bottom: 5px;">
 							  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
 							  			{{food.foodName}}
-							  <span class="caret"></span></button><span ng-click="currentModel.foods.splice($index,1);" class="glyphicon glyphicon-remove-circle" aria-hidden="true" style="font-size: 19px;top: 4px;left: 5px;color: red;cursor: pointer;"></span>
-							  <ul class="dropdown-menu">
-							    <li ng-repeat="model in foods" ng-click="currentModel.foods[$parent.$index] = model">
-							    	<a href="#">{{model.foodName}}</a>
-							    </li>
-							  </ul>
+							  </button><span ng-click="currentModel.foods.splice($index,1);" class="glyphicon glyphicon-remove-circle" aria-hidden="true" style="font-size: 19px;top: 4px;left: 5px;color: red;cursor: pointer;"></span>
 							</div>
 							
 							<div class="dropdown">
-							  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-							  			
+							  <button class="btn btn-primary dropdown-toggle" type="button" >
+							  		<input ng-blur="blurSuggestion()" ng-click="focusSuggestion()" ng-model="suggestion" class="form-control" id="suggestion" style =" float: left;width: 150px;margin-right:10px;" type="text"/>
 							  <span class="caret"></span></button>
 							  <ul class="dropdown-menu">
-							    <li ng-repeat="model in foods" ng-click="currentModel.foods.push(model);">
+							    <li ng-repeat="model in filteredFoods" ng-click="emptySuggestion();currentModel.foods.push(model);">
 							    	<a href="#">{{model.foodName}}</a>
 							    </li>
 							  </ul>

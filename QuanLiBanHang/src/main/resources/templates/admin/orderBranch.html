@@ -28,8 +28,10 @@
 							<table id="mytable" class="table table-bordred table-striped">
 								<thead>
 									<th>Order Number</th>
+									<th>Date</th>
+									<th>Total Money</th>
 									<th>Phone</th>
-									<th>Address</th>
+									<th>Address/Table</th>
 									<th>Move to kitchen</th>
 									<th>Edit</th>
 									<th>Delete</th>
@@ -37,6 +39,8 @@
 								<tbody>
 									<tr ng-repeat="model in processingStatusModels  | orderBy:'self'">
 										<td ng-bind="model.self">Mohsin</td>
+										<td ng-bind="model.dateOrder">Mohsin</td>
+										<td ng-bind="model.totalMoney">Mohsin</td>
 										<td ng-bind="model.phone">0967032494</td>
 										<td ng-bind="model.address"></td>
 										<td>
@@ -79,8 +83,10 @@
 							<table id="mytable" class="table table-bordred table-striped">
 								<thead>
 									<th>Order Number</th>
+									<th>Date</th>
+									<th>Total Money</th>
 									<th>Phone</th>
-									<th>Address</th>
+									<th>Address/Table</th>
 									<th>Done</th>
 									<th>Edit</th>
 									<th>Delete</th>
@@ -88,6 +94,8 @@
 								<tbody>
 									<tr ng-repeat="model in cookingStatusModels  | orderBy:'self'">
 										<td ng-bind="model.self">Mohsin</td>
+										<td ng-bind="model.dateOrder">Mohsin</td>
+										<td ng-bind="model.totalMoney">Mohsin</td>
 										<td ng-bind="model.phone">0967032494</td>
 										<td ng-bind="model.address"></td>
 										<td>
@@ -140,28 +148,27 @@
 							<input class="form-control " type="text" ng-model="currentModel.phone" />
 						</div>
 						<div class="form-group">
-							Address: 
+							Address/Table: 
 							<input class="form-control " type="text" ng-model="currentModel.address" />
+						</div>
+						<div class="form-group">
+							Total Money: 
+							<input disabled="" class="form-control " type="text" ng-model="currentModel.totalMoney"/>
 						</div>
 						<div class="form-group">
 							Food:
 							<div class="dropdown" ng-repeat="food in currentModel.foods track by $index" style="margin-bottom: 5px;">
 							  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
 							  			{{food.foodName}}
-							  <span class="caret"></span></button><span ng-click="currentModel.foods.splice($index,1);" class="glyphicon glyphicon-remove-circle" aria-hidden="true" style="font-size: 19px;top: 4px;left: 5px;color: red;cursor: pointer;"></span>
-							  <ul class="dropdown-menu">
-							    <li ng-repeat="model in foods" ng-click="currentModel.foods[$parent.$index] = model">
-							    	<a href="#">{{model.foodName}}</a>
-							    </li>
-							  </ul>
+							  </button><span ng-click="currentModel.foods.splice($index,1);" class="glyphicon glyphicon-remove-circle" aria-hidden="true" style="font-size: 19px;top: 4px;left: 5px;color: red;cursor: pointer;"></span>
 							</div>
 							
 							<div class="dropdown">
-							  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-							  			
+							  <button class="btn btn-primary dropdown-toggle" type="button">
+							  		<input ng-blur="blurSuggestion()" ng-click="focusSuggestion()" ng-model="suggestion" class="form-control" id="suggestion" style =" float: left;width: 150px;margin-right:10px;" type="text"/>
 							  <span class="caret"></span></button>
 							  <ul class="dropdown-menu">
-							    <li ng-repeat="model in foods" ng-click="currentModel.foods.push(model);">
+							    <li ng-repeat="model in filteredFoods" ng-click="emptySuggestion();currentModel.foods.push(model);">
 							    	<a href="#">{{model.foodName}}</a>
 							    </li>
 							  </ul>
