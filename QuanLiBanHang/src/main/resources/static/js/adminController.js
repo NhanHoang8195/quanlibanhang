@@ -63,10 +63,18 @@ function defineBaseFunction(scope, http){
 	crudFunction(scope, http);
 	
 	setInterval(function(){
-		if($('.modal').hasClass('in') || $(".dropdown-menu").is(":visible")){ 
+		if($('.modal').hasClass('in') || $(".dropdown-menu").is(":visible") || !$(".move-branch").is(":disabled")){ 
 			return;
 		}
-		scope.get();
+		var flag = true;
+		$(".move-branch").each(function(idx, li) {
+		    var product = $(li);
+		    if(product.is(":enabled"))
+		    	flag = false;
+		});
+		if(scope.name == "orders" && flag==true){
+			scope.get();
+		}
 	}, 5000);
 }
 app.controller('foodController', function($scope, $http) {

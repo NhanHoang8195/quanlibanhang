@@ -46,7 +46,7 @@
 											  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
 											  			{{model.branch.name}}
 											  <span class="caret"></span></button>
-											  <button ng-disabled="model.branch == undefined" class="btn btn-primary btn-xs" data-title="Move" ng-click="setCurrentModel(model);currentModel.orderStatus='PROCESSING';put()">
+											  <button ng-disabled="model.branch == undefined" class="btn btn-primary btn-xs move-branch" data-title="Move" ng-click="setCurrentModel(model);currentModel.orderStatus='PROCESSING';put()">
 													<span class="glyphicon glyphicon-arrow-right"></span>
 												</button>
 											  <ul class="dropdown-menu">
