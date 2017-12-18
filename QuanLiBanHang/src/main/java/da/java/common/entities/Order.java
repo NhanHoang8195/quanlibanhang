@@ -89,6 +89,10 @@ public class Order implements Serializable {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Food> foods;
     
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
+    
     public Integer getTotalMoney() {
         return totalMoney;
     }
