@@ -61,6 +61,11 @@ public class Branch implements Serializable {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Food> foods;
     
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="branch")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Account> account;
+    
+    
     public List<Order> getOrderOfBranch() {
         return orderOfBranch;
     }
