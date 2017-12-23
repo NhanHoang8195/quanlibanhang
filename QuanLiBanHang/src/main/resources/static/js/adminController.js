@@ -282,6 +282,7 @@ app.controller('orderBranchController', function($scope, $http) {
 	};
 	scope.beforePost = function(model){
 		model.orderStatus = 'PROCESSING';
+		model.dateOrder = new Date().toLocaleString();
 	};
 	
 	scope.get("branches", function(data){
