@@ -252,6 +252,7 @@ app.controller('orderSwitchboardController', function($scope, $http) {
 	};
 	scope.beforePost = function(model){
 		model.orderStatus = 'NEW';
+		model.dateOrder = new Date().toLocaleString();
 	};
 	
 	scope.get("branches", function(data){
