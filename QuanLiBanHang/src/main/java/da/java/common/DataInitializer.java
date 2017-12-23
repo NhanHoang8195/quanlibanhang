@@ -104,6 +104,16 @@ public class DataInitializer {
 		 {
 			 roleRepository.save(role2);
 		 }
+		 Role role3 = new Role(RoleName.ROLE_SWITCHBOARD);
+		 if(!roles.contains(role3))
+		 {
+			 roleRepository.save(role3);
+		 }
+		 Role role4 = new Role(RoleName.ROLE_BRANCH);
+		 if(!roles.contains(role4))
+		 {
+			 roleRepository.save(role4);
+		 }
 	}
 	 
 	 public void initAdminAccount(AccountRepository accountRepo, RoleRepository roleRepo, PasswordEncoder passwordEncoder) {
@@ -118,8 +128,30 @@ public class DataInitializer {
 	         account.setRealName("NhanHoang");
 	         account.setPhone("0968005379");
 	         accountRepo.save(account);	     
-	         }
-	     
+	     }
+	     if(accountRepo.findByEmail("switchboard@gmail.com") == null) {
+	         Account account = new Account();
+	         Set<Role> roles = new HashSet<>();
+	         roles.add(roleRepo.findByRoleName(RoleName.ROLE_SWITCHBOARD));
+	         account.setEmail("switchboard@gmail.com");
+	         account.setRoles(roles);
+	         account.setPassword(passwordEncoder.encode("123456"));
+	         account.setAddress("None");
+	         account.setRealName("Tong dai 1");
+	         account.setPhone("0968005399");
+	         accountRepo.save(account);
+	     }
+	     if(accountRepo.findByEmail("branch@gmail.com") == null) {
+	         Account account = new Account();
+	         Set<Role> roles = new HashSet<>();
+	         roles.add(roleRepo.findByRoleName(RoleName.ROLE_BRANCH));
+	         account.setEmail("branch@gmail.com");
+	         account.setRoles(roles);
+	         account.setPassword(passwordEncoder.encode("123456"));
+	         account.setAddress("None");
+	         account.setRealName("Quan ly chi nhanh 1");
+	         account.setPhone("0968005388");
+	         accountRepo.save(account);
+	     }
 	 }
-	 
 }

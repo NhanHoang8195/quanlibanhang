@@ -6,7 +6,7 @@ public enum RoleName {
     /**Role member*/
     ROLE_MEMBER,
     /**Role tong dai*/
-    ROLE_TONGDAI,
+    ROLE_SWITCHBOARD,
     /**Role quan li chi nhanh*/
-    ROLE_QLCN
+    ROLE_BRANCH
 }
