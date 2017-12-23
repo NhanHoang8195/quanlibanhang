@@ -99,7 +99,6 @@ app.controller('branchController', function($scope, $http) {
 	scope.get();
 	scope.get("foods", function(data){
 		scope.foods = data;
-		
 		scope.$watch('currentModel.foods', function() {
 			if(scope.currentModel.foods == undefined){
 				scope.currentModel.foods = [];
@@ -114,7 +113,6 @@ app.controller('branchController', function($scope, $http) {
 				return true;
 			});
 	    }, true);
-
 	});	
 });
 app.controller('customerController', function($scope, $http) {
@@ -131,9 +129,6 @@ app.controller('customerController', function($scope, $http) {
 	scope.beforePost = function(model){
 		model.roles = scope.roles.filter(function(item) {return item.roleName =="ROLE_MEMBER"});
 	};
-	scope.get("roles", function(models){
-		scope.roles = models;
-	});
 });
 app.controller('staffController', function($scope, $http) {
 	var scope = $scope; var http = $http;
@@ -141,7 +136,33 @@ app.controller('staffController', function($scope, $http) {
 	scope.singularName = "account";
 	
 	defineBaseFunction(scope, http);
-	
+	scope.getRoles = function(roles){
+		var roleNameArray = [];
+		for(var index in roles){
+			roleNameArray.push(roles[index].roleName);
+		}
+		return roleNameArray.join(",");
+	}
+	scope.get("branches", function(data){
+		scope.branches = data;
+	});
+	scope.get("roles", function(models){
+		scope.roles = models;
+		scope.$watch('currentModel.roles', function() {
+			if(scope.currentModel.roles == undefined){
+				scope.currentModel.roles = [];
+				return;
+			}
+			scope.filteredRoles = scope.roles.filter( function(item) {
+				for(var i=0;i<scope.currentModel.roles.length;i++){
+					if(scope.currentModel.roles[i].roleName == item.roleName){
+						return false;
+					}
+		    	}
+				return true;
+			});
+	    }, true);
+	});
 	scope.get();
 	scope.afterGet = function(models){
 		scope.models = models.filter(function(item) {return item.roles[0].roleName !="ROLE_MEMBER"});

@@ -22,7 +22,8 @@
 									<th>Name</th>
 									<th>Phone</th>
 									<th>Email</th>
-									<th>Address</th>
+									<th>Roles</th>
+									<th>Branch</th>
 									<th>Edit</th>
 
 									<th>Delete</th>
@@ -32,7 +33,8 @@
 										<td ng-bind="model.realName">Mohsin</td>
 										<td ng-bind="model.phone">0967032494</td>
 										<td ng-bind="model.email"></td>
-										<td ng-bind="model.address">CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
+										<td ng-bind="getRoles(model.roles)">CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
+										<td ng-bind="model.branch.name"></td>
 										<td><p data-placement="top" data-toggle="tooltip"
 												title="Edit">
 												<button class="btn btn-primary btn-xs" data-title="Edit"
@@ -82,12 +84,41 @@
 							<input class="form-control " type="text" ng-model="currentModel.phone" />
 						</div>
 						<div class="form-group">
-							Email: 
-							<input class="form-control " type="email" ng-model="currentModel.email" />
+							Roles: 
+							<div class="dropdown" ng-repeat="food in currentModel.roles" style="margin-bottom: 5px;">
+							  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+							  			{{food.roleName}}
+							  <span class="caret"></span></button><span  ng-if="$index>0" ng-click="currentModel.roles.splice($index,1);" class="glyphicon glyphicon-remove-circle" aria-hidden="true" style="font-size: 19px;top: 4px;left: 5px;color: red;cursor: pointer;"></span>
+							  <ul class="dropdown-menu">
+							    <li ng-repeat="model in filteredRoles" ng-click="currentModel.roles[$parent.$index] = model">
+							    	<a href="#">{{model.roleName}}</a>
+							    </li>
+							  </ul>
+							</div>
+							
+							<div class="dropdown" ng-if="filteredRoles.length>0">
+							  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+							  			
+							  <span class="caret"></span></button>
+							  <ul class="dropdown-menu">
+							    <li ng-repeat="model in filteredRoles" ng-click="currentModel.roles.push(model);">
+							    	<a href="#">{{model.roleName}}</a>
+							    </li>
+							  </ul>
+							</div>
 						</div>
 						<div class="form-group">
-							Address: 
-							<input class="form-control " type="text" ng-model="currentModel.address" />
+							Branch: 
+							<div class="dropdown">
+							  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+							  			{{currentModel.branch.name}}
+							  <span class="caret"></span></button>
+							  <ul class="dropdown-menu">
+							    <li ng-repeat="branch in branches" ng-click="currentModel.branch = branch">
+							    	<a style="cursor: pointer;">{{branch.name}}</a>
+							    </li>
+							  </ul>
+							</div>
 						</div>
 					</div>
 					<div class="modal-footer ">
