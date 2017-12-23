@@ -18,7 +18,7 @@ import da.java.common.repository.RoleRepository;
 
 public class DataInitializer {
     
-	 public void initBranch(BranchRepository branchRepository)
+	 public void initBranch(BranchRepository branchRepository, AccountRepository accountRepo)
 	 {
 		 List<Branch> branchs = branchRepository.findAll();
 		 
@@ -26,7 +26,12 @@ public class DataInitializer {
 		 Branch branch1 = new Branch("La Salsa","09670324001", "5 Bùi Thị Xuân, Quận Hai Bà Trưng", "https://media.foody.vn/res/g14/136680/prof/s480x300/foody-mobile-la-salsa1-jpg-316-635675632346110249.jpg");
 		 if(!branchs.contains(branch1))
 		 {
-			 branchRepository.save(branch1);
+			 Branch branch = branchRepository.save(branch1);
+			 Account account = accountRepo.findByEmail("branch@gmail.com");
+			 if(account != null) {
+				 account.setBranch(branch);
+		         accountRepo.save(account);
+		     }
 		 }
 		 
 		 // https://www.foody.vn/ha-noi/nam-son-cuisine-tiec-cuoi-hoi-nghi?isnulldeli=1
@@ -151,6 +156,18 @@ public class DataInitializer {
 	         account.setAddress("None");
 	         account.setRealName("Quan ly chi nhanh 1");
 	         account.setPhone("0968005388");
+	         accountRepo.save(account);
+	     }
+	     if(accountRepo.findByEmail("member@gmail.com") == null) {
+	         Account account = new Account();
+	         Set<Role> roles = new HashSet<>();
+	         roles.add(roleRepo.findByRoleName(RoleName.ROLE_MEMBER));
+	         account.setEmail("member@gmail.com");
+	         account.setRoles(roles);
+	         account.setPassword(passwordEncoder.encode("123456"));
+	         account.setAddress("None");
+	         account.setRealName("Member 1");
+	         account.setPhone("0968205388");
 	         accountRepo.save(account);
 	     }
 	 }

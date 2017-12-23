@@ -66,8 +66,9 @@ public class QuanLiBanHangApplication implements CommandLineRunner{
     public void run(String... arg0) throws Exception {
 		DataInitializer dataInitializer = new DataInitializer();
 		dataInitializer.initFood(foodRepository);
-		dataInitializer.initBranch(branchRepository);
+		
 		dataInitializer.initRole(roleRepository);
 		dataInitializer.initAdminAccount(accountRepo, roleRepository, passwordEncoder);
+		dataInitializer.initBranch(branchRepository, accountRepo);
     }
 }

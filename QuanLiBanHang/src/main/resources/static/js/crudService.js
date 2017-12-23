@@ -15,7 +15,7 @@ function crudFunction(scope, http)
 	    }
 	};
 	scope.get = function(name, callback){
-		scope.currentModel = {};
+		scope.emptyCurrentModel();
 		var tempName = name == undefined ? scope.name:name;
 		var tempUrl = "/"+ tempName + "/"; 
 		scope.getByUrl(tempUrl, callback);
@@ -136,7 +136,6 @@ function crudFunction(scope, http)
 			callback();
 		}
 	}
-	
 	scope.put = function(callback){
 		if(scope.currentModel._links == undefined){
 			scope.post(callback);
@@ -150,6 +149,10 @@ function crudFunction(scope, http)
 			scope.putExtendedProperties(scope.currentModel, function(){
 				if(callback != undefined){
 					callback();
+					return;
+				}
+				if(scope.afterPut != undefined){
+					scope.afterPut();
 					return;
 				}
 				scope.get();
@@ -204,6 +207,18 @@ function crudFunction(scope, http)
 	
 	scope.findByEmail = function(email, callback){
 		scope.getByUrl("/accounts/search/findByEmail?email=" + email, callback);
+	}
+	scope.updatePassword = function(email, password, callback){
+		var model = {};
+		model.email=email;
+		model.password = password;
+		http.put("/admin/updatePassword", model)
+		.then(function(response) {
+			if(callback != undefined){
+				callback();
+				return;
+			}
+		})
 	}
 }
 

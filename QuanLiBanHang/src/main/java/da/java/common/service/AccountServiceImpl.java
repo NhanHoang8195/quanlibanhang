@@ -48,5 +48,18 @@ public class AccountServiceImpl implements AccountService{
         }
         
     }
-
+    @Override
+    public void updatePassword(String email, String password) {
+        try{
+            Account account = accountRepo.findByEmail(email);
+    
+            account.setPassword(passwordEncoder.encode(password));
+            account =  accountRepo.save(account);
+            if(account == null) {
+                throw new Exception();
+            }
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

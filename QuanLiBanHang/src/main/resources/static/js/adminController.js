@@ -41,6 +41,7 @@ function defineBaseFunction(scope, http){
 	
 	scope.emptyCurrentModel = function(){
 		scope.currentModel = {};
+		scope.password = "";
 	};
 	
 	scope.addFile= function (event) {
@@ -167,6 +168,12 @@ app.controller('staffController', function($scope, $http) {
 	scope.afterGet = function(models){
 		scope.models = models.filter(function(item) {return item.roles[0].roleName !="ROLE_MEMBER"});
 	};
+	scope.afterPut = function(){
+		if(scope.password == undefined || scope.password == ""){
+			return;
+		}
+		scope.updatePassword(scope.currentModel.email, scope.password);
+	}
 });
 app.controller('categoryController', function($scope, $http) {
 	var scope = $scope; var http = $http;

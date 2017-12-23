@@ -1,13 +1,27 @@
 package da.java.common.controller;
 
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import da.java.common.entities.Account;
+import da.java.common.service.AccountService;
 
 
 @Controller
 public class AdminController {
 	
+	  @Autowired
+	    private AccountService accountService;
+	  
 	@GetMapping({"/admin/index"})
     public String index(Model model) {
 		return "admin/index";
@@ -43,4 +57,12 @@ public class AdminController {
 		return "admin/orderBranch";
     }
 	
+	@PutMapping("/admin/updatePassword")
+    public ResponseEntity<?> updatePassword(@RequestBody Map<String, String> json) {
+		String email = json.get("email");
+		String password = json.get("password");
+		accountService.updatePassword(email, password);
+		
+		return new ResponseEntity<Account>(HttpStatus.OK);
+    }
 }
