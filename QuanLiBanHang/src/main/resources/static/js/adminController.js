@@ -1,5 +1,8 @@
 $(document).ready(function(c) {
-    var url = window.location; 
+    
+});
+function activeMenu(){
+	var url = window.location; 
     var element = $('ul.side-nav a').filter(function() {
     	return this.href == url || (url.href.indexOf(this.href) == 0 && this.pathname != '/') ; 
     }).parent().addClass('active');
@@ -10,8 +13,8 @@ $(document).ready(function(c) {
     
     if (element.is('li')) { 
          element.addClass('active').parent().parent('li').addClass('active')
-     }
-});
+    }
+}
 function resetAllFiles() {
     var inputs = document.getElementsByTagName('input');
     var length = inputs.length;
@@ -77,16 +80,12 @@ function defineBaseFunction(scope, http){
 			scope.get();
 		}
 	}, 5000);
-	
 	var email = $("#authenticationEmail")[0];
     if(email != undefined){
 	   scope.findByEmail($("#authenticationEmail")[0].innerText, function(model){
 	    	console.log(model);
 	    	scope.account = model;
 	    });
-    }
-    scope.hasRoleAdmin = function(){
-    	
     }
 }
 app.controller('foodController', function($scope, $http) {
@@ -100,6 +99,42 @@ app.controller('foodController', function($scope, $http) {
 	scope.get("categories", function(data){
 		scope.categories = data;
 	});	
+});
+app.controller('menuController', function($scope, $http) {
+	var scope = $scope; var http = $http;
+	crudFunction(scope, http);
+	
+	var email = $("#authenticationEmail")[0];
+    if(email != undefined){
+	   scope.findByEmail($("#authenticationEmail")[0].innerText, function(model){
+	    	console.log(model);
+	    	scope.account = model;
+	    });
+    }
+    scope.hasRoleAdmin = function(){
+    	if(scope.account == undefined)
+    		return false;
+    	var filteredRoles = scope.account.roles.filter(function(item) {
+			return item.roleName == "ROLE_ADMIN";
+		});activeMenu();
+    	return filteredRoles.length > 0;
+    }
+    scope.hasRoleSwitchboard = function(){
+    	if(scope.account == undefined)
+    		return false;
+    	var filteredRoles = scope.account.roles.filter(function(item) {
+			return item.roleName == "ROLE_SWITCHBOARD";
+		});activeMenu();
+    	return filteredRoles.length > 0;
+    }
+    scope.hasRoleBranch = function(){
+    	if(scope.account == undefined)
+    		return false;
+    	var filteredRoles = scope.account.roles.filter(function(item) {
+			return item.roleName == "ROLE_BRANCH";
+		});activeMenu();
+    	return filteredRoles.length > 0;
+    }
 });
 app.controller('branchController', function($scope, $http) {
 	var scope = $scope; var http = $http;
@@ -141,6 +176,13 @@ app.controller('customerController', function($scope, $http) {
 	scope.beforePost = function(model){
 		model.roles = scope.roles.filter(function(item) {return item.roleName =="ROLE_MEMBER"});
 	};
+	
+	scope.afterPut = function(){
+		if(scope.password == undefined || scope.password == ""){
+			return;
+		}
+		scope.updatePassword(scope.currentModel.email, scope.password);
+	}
 });
 app.controller('staffController', function($scope, $http) {
 	var scope = $scope; var http = $http;

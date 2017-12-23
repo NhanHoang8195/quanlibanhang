@@ -156,12 +156,12 @@
                 </li>
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <div class="collapse navbar-collapse navbar-ex1-collapse" ng-app="myApp" ng-controller="menuController">
                 <ul class="nav navbar-nav side-nav">
                     <li>
                         <a href="/admin/index"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                    <li>
+                    <li ng-if="hasRoleAdmin()">
                     	<a href="javascript:;" data-toggle="collapse" data-target="#food"><i class="fa fa-fw fa-beer"></i> Foods <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="food" class="expand">
                             <li>
@@ -172,22 +172,22 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <li ng-if="hasRoleAdmin()">
                         <a href="/admin/branch"><i class="fa fa-fw fa-home"></i> Branches</a>
                     </li>
-                    <li>
+                    <li ng-if="hasRoleAdmin()">
                         <a href="/admin/staff"><i class="fa fa-fw fa-group"></i> Staffs</a>
                     </li>
-                    <li>
+                    <li ng-if="hasRoleSwitchboard()">
                         <a href="/admin/customer"><i class="fa fa-fw fa-group"></i> Customers</a>
                     </li>
-                    <li>
+                    <li ng-if="hasRoleSwitchboard() || hasRoleBranch()">
                         <a href="javascript:;" data-toggle="collapse" data-target="#order"><i class="fa fa-fw fa-edit"></i> Orders <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="order" class="expand">
-                            <li>
+                            <li ng-if="hasRoleSwitchboard()">
                                 <a href="/admin/orderSwitchboard">Switchboard</a>
                             </li>
-                            <li>
+                            <li ng-if="hasRoleBranch()">
                                 <a href="/admin/orderBranch">Branch</a>
                             </li>
                         </ul>

@@ -155,7 +155,6 @@ function crudFunction(scope, http)
 				}
 				if(scope.afterPut != undefined){
 					scope.afterPut();
-					return;
 				}
 				scope.get();
 			});
