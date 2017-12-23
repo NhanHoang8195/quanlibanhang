@@ -40,7 +40,9 @@ function crudFunction(scope, http)
 		    			scope.afterGet(models);
 		    		}
 		    	};
-		    	
+		    	if(models.length == 0){
+		    		self.callback();
+		    	}
 		    	for(var i=0;i<models.length;i++){
 		    		self.count++;
 		    		scope.getExtendedProperties(models[i], function(){

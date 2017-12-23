@@ -64,7 +64,7 @@ function defineBaseFunction(scope, http){
 	crudFunction(scope, http);
 	
 	setInterval(function(){
-		if($('.modal').hasClass('in') || $(".dropdown-menu").is(":visible") || !$(".move-branch").is(":disabled")){ 
+		if($('.modal').hasClass('in') || $(".dropdown-menu").is(":visible")){ 
 			return;
 		}
 		var flag = true;
@@ -77,6 +77,17 @@ function defineBaseFunction(scope, http){
 			scope.get();
 		}
 	}, 5000);
+	
+	var email = $("#authenticationEmail")[0];
+    if(email != undefined){
+	   scope.findByEmail($("#authenticationEmail")[0].innerText, function(model){
+	    	console.log(model);
+	    	scope.account = model;
+	    });
+    }
+    scope.hasRoleAdmin = function(){
+    	
+    }
 }
 app.controller('foodController', function($scope, $http) {
 	var scope = $scope; var http = $http;
@@ -218,8 +229,12 @@ app.controller('orderBranchController', function($scope, $http) {
 	
 	scope.get();
 	scope.afterGet = function(models){
-		scope.processingStatusModels = scope.models.filter(function(item) {return item.orderStatus=="PROCESSING"});
-		scope.cookingStatusModels = scope.models.filter(function(item) {return item.orderStatus=="COOKING"});
+		scope.processingStatusModels = scope.models.filter(function(item) {
+			return item.orderStatus=="PROCESSING" && item.branch.name == scope.account.branch.name;
+		});
+		scope.cookingStatusModels = scope.models.filter(function(item) {
+			return item.orderStatus=="COOKING" && item.branch.name == scope.account.branch.name;
+		});
 		baseOrder(scope);
 	};
 	scope.beforePost = function(model){
@@ -236,6 +251,7 @@ app.controller('orderBranchController', function($scope, $http) {
 function baseOrder(scope){
 	scope.$watch('foods', function() {
 		scope.filteredFoods = scope.foods;
+		scope.suggestion = "";
     }, true);
 	scope.$watch('suggestion', function() {
 		if(scope.foods == undefined){
