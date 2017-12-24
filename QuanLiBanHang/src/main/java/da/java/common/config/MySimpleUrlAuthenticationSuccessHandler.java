@@ -41,6 +41,8 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
     protected String determineTargetUrl(Authentication authentication) {
         boolean isUser = false;
         boolean isAdmin = false;
+        boolean isSwitchBoard = false;
+        boolean isBranch = false;
         Collection<? extends GrantedAuthority> authorities
          = authentication.getAuthorities();
         for (GrantedAuthority grantedAuthority : authorities) {
@@ -50,14 +52,20 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
             } else if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
                 isAdmin = true;
                 break;
+            } else if (grantedAuthority.getAuthority().equals("ROLE_SWITCHBOARD")) {
+                isSwitchBoard = true;
+                break;
+            } else if (grantedAuthority.getAuthority().equals("ROLE_BRANCH")) {
+                isBranch = true;
+                break;
             }
         }
  
         if (isUser) {
             return "/";
-        } else if (isAdmin) {
+        } else if (isAdmin || isSwitchBoard || isBranch) {
             return "/admin/index";
-        } else {
+        } else  {
             throw new IllegalStateException();
         }
     }

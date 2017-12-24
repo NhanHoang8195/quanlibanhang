@@ -48,7 +48,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
                 .antMatchers("/about").authenticated()
                 .antMatchers("/checkout/").authenticated()
-                .antMatchers("/admin/**").authenticated()
+                .antMatchers("/admin/**").hasAnyRole("ADMIN", "SWITCHBOARD", "BRANCH")
                 .anyRequest().permitAll()
              .and()
             .formLogin()
