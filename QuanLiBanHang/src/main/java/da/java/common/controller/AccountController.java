@@ -67,4 +67,8 @@ public class AccountController {
 	    }
 	    return "redirect:/";
 	}
+	@GetMapping("")
+	public String account(HttpServletRequest request, HttpServletResponse response) {
+		return "account/account";
+	}
 }

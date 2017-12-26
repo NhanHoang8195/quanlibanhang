@@ -40,9 +40,9 @@
                                      <span id="authenticationEmail" sec:authentication="name"></span><span class="caret"></span>
                                   </button>
                                   <ul class="dropdown-menu">
-                                    <li><a href="#">Account</a></li>
-                                    <li><a href="#">Setting</a></li>
-                                    <li><a href="#">Help</a></li>
+                                    <li><a th:href="@{/account}">Account</a></li>
+                                    <li><a th:href="@{/setting}">Setting</a></li>
+                                    <li><a th:href="@{/help}">Help</a></li>
                                     <li><a th:href="@{/account/logout}"> Logout</a></li>
                                   </ul>
                                 </div>
