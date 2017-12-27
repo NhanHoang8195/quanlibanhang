@@ -69,14 +69,34 @@ public class AccountController {
 	    return "redirect:/";
 	}
 	@GetMapping("")
-	public String account(Model model, HttpServletRequest request, HttpServletResponse response) {
+	public String showAccount(Model model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		
 		if (!(authentication instanceof AnonymousAuthenticationToken)) {
-		    String currentUserName = authentication.getName();
-		    //System.out.println(accountService.getAccount(currentUserName));
+		    String currentUserName = authentication.getName();		  
 		    model.addAttribute("account", accountService.getAccount(currentUserName));
 		}
 		return "account/account";
+	}
+	
+	@PostMapping("")
+	public String showAccount(@Valid Account account, BindingResult result, RedirectAttributes redirect, HttpServletRequest req) {
+	    if(result.hasErrors()) {
+	        FieldError x= result.getFieldError();
+	        System.out.println(x);
+            return "redirect:/account";
+        }
+	    System.out.println(account.getEmail());
+	    System.out.println(account.getRealName());
+	    System.out.println(account.getPhone());
+	    System.out.println(account.getAddress());
+	    boolean temp = accountService.updateAccount(account);
+
+	    if (temp == false) {
+	        return "redirect:/account";
+	    }
+	    redirect.addFlashAttribute("success", "Thay đổi thông tin thành công");
+	   return "redirect:/account";
+	   
 	}
 }

@@ -73,4 +73,22 @@ public class AccountServiceImpl implements AccountService{
         }
 		return null;
     }
+    @Override
+    public boolean updateAccount(Account account) {
+        try{
+            Account temp = accountRepo.findByEmail(account.getEmail());
+    
+            temp.setAddress(account.getAddress());
+            temp.setPhone(account.getPhone());
+            temp.setRealName(account.getRealName());
+            temp =  accountRepo.save(temp);
+            if(temp == null) {
+                throw new Exception();
+            }
+            return true;
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 }
