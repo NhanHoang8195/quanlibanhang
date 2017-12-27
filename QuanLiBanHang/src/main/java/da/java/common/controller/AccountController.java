@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -68,7 +69,14 @@ public class AccountController {
 	    return "redirect:/";
 	}
 	@GetMapping("")
-	public String account(HttpServletRequest request, HttpServletResponse response) {
+	public String account(Model model, HttpServletRequest request, HttpServletResponse response) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+		    String currentUserName = authentication.getName();
+		    //System.out.println(accountService.getAccount(currentUserName));
+		    model.addAttribute("account", accountService.getAccount(currentUserName));
+		}
 		return "account/account";
 	}
 }

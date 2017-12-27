@@ -17,32 +17,33 @@
 						        <div class="form-group">
 						          <label class="col-lg-3 control-label">Full Name:</label>
 						          <div class="col-lg-4">
-						            <input class="form-control"  type="text"/>
+						            <input class="form-control"  type="text" th:field="*{account.realName}"/>
 						          </div>
 						        </div>
 						        <div class="form-group">
 						          <label class="col-lg-3 control-label">Email:</label>
 						          <div class="col-lg-4">
-						            <input class="form-control"  type="text" disabled='true'/>
+						            <input class="form-control"  type="text" disabled='true' th:field="*{account.email}"/>
 						          </div>
 						        </div>
 						        <div class="form-group">
 						          <label class="col-lg-3 control-label">Phone Number:</label>
 						          <div class="col-lg-4">
-						            <input class="form-control"  type="text"/>
+						            <input class="form-control"  type="text" th:field="*{account.phone}"/>
 						          </div>
 						        </div>
 						        <div class="form-group">
 						          <label class="col-lg-3 control-label">Address:</label>
 						          <div class="col-lg-4">
-						            <input class="form-control"  type="text"/>
+						            <input class="form-control"  type="text" th:field="*{account.address}"/>
 						          </div>
 						        </div>
 						        
 						        <div class="form-group">
 						          <label class="col-md-3 control-label"></label>
 						          <div class="col-md-8">
-						            <input class="btn btn-primary" value="Save Changes" type="button"/>
+						          	<input id='edit' class="btn btn-primary" value="Edit" type="button"/>
+						            <input id='savechange' class="btn btn-primary" value="Save Changes" type="button" disabled = 'true'/>
 						            <span></span>
 						            <input class="btn btn-default" value="Cancel" type="reset"/>
 						          </div>
@@ -56,5 +57,14 @@
 	</div>
 
 	<div th:replace="shared/footer :: footer"></div>
+	   <script type="text/javascript">
+   			$( "#savechange" ).click(function() {
+   				$( "#edit" ).prop('disabled', true);
+			});
+   			$( "#edit" ).click(function() {
+   				$( "#savechange" ).prop('disabled', false);
+   				$( "#edit" ).prop('disabled', true);
+			});
+		</script>
 </body>
 </html>

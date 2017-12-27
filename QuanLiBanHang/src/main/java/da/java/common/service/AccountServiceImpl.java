@@ -62,4 +62,15 @@ public class AccountServiceImpl implements AccountService{
             System.out.println(e.getMessage());
         }
     }
+    @Override
+    public Account getAccount(String email) {
+        try{
+            Account account = accountRepo.findByEmail(email);
+            return account;
+         
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+		return null;
+    }
 }
