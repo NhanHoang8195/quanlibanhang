@@ -12,23 +12,17 @@
 		    <thead>
 		      <tr>
 		        <th>Mã đơn hàng</th>
-		        <th>Ngày đặt hàng</th>
+		        <th>Ngày tháng</th>
 		        <th>Tổng tiền</th>
 		        <th>Tình trạng</th>
 		      </tr>
 		    </thead>
-		    <tbody>
+		    <tbody th:each="order : ${listOrder}">
 		      <tr>
-		        <td>1</td>
-		        <td>1/11/2017</td>
-		        <td>169000</td>
-		        <td>Đã giao hàng</td>
-		      </tr>
-		      <tr>
-		        <td>2</td>
-		        <td>2/11/2017</td>
-		        <td>196000</td>
-		        <td>Đã giao hàng</td>
+		        <td th:text="${order.getProductOrderId()}"></td>
+		        <td th:text="${order.getDateOrder()}"></td>
+		        <td th:text="${order.getTotalMoney()}"></td>
+		        <td th:text="${order.getOrderStatus()}"></td>
 		      </tr>
 		    </tbody>
 		</table>
