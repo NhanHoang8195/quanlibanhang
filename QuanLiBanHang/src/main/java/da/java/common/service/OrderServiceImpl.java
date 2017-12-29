@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 import da.java.common.CommonUtil;
 import da.java.common.entities.Order;
@@ -46,4 +47,21 @@ public class OrderServiceImpl implements OrderService {
         orderRepository.delete(id);
         return null;
     }
+    
+    public List<Order> getOrderList(){
+    	
+    	try {
+    		List<Order> getOrderList = orderRepository.findAll();
+    		if (getOrderList == null) {
+                throw new Exception ("can not get resource");
+            }
+    		return getOrderList;
+    	}catch (Exception e) {
+            logger.error("Exception: {}", e.getMessage());
+            return null;
+        } finally {
+            logger.debug("OUT - loadOrderList()");
+        }
+    }
+    
 }
