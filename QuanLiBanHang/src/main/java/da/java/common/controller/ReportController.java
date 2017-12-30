@@ -64,4 +64,25 @@ public class ReportController {
 	        
 	        return new ModelAndView(View("OrderBranch"), params);
 	    }
+	    
+	    // http://localhost:8080/report/foodAll
+	    @RequestMapping(path = "/foodAll", method = RequestMethod.GET)
+	    public ModelAndView foodAll() {
+	        Map<String, Object> params = new HashMap<>();
+	        params.put("datasource", dbsoruce);
+	        
+	        return new ModelAndView(View("FoodAll"), params);
+	    }
+	    
+	 // http://localhost:8080/report/foodBranch?branchId=1&branchName=olala
+	    @RequestMapping(path = "/foodBranch", method = RequestMethod.GET)
+	    public ModelAndView foodBranch(@RequestParam("branchId") Integer branchId, @RequestParam("branchName") String branchName) {
+	        Map<String, Object> params = new HashMap<>();
+	        params.put("datasource", dbsoruce);
+	        
+	        params.put("branchId", branchId);
+	        params.put("branchName", branchName);
+	        
+	        return new ModelAndView(View("FoodBranch"), params);
+	    }
 }
