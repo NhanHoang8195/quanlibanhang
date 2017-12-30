@@ -42,7 +42,11 @@
                                   <ul class="dropdown-menu">
                                     <li><a th:href="@{/account}">Account</a></li>
                                     <li><a th:href="@{/setting}">Setting</a></li>
-                                    <li><a th:href="@{/help}">Help</a></li>
+                                    
+
+                                    <li sec:authorize="hasAnyRole('ADMIN','SWITCHBOARD','BRANCH')"><a href="/admin/index">Management</a></li>
+				
+									<li><a th:href="@{/help}">Help</a></li>
                                     <li><a th:href="@{/account/logout}"> Logout</a></li>
                                   </ul>
                                 </div>
