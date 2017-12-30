@@ -74,7 +74,7 @@ public class ReportController {
 	        return new ModelAndView(View("FoodAll"), params);
 	    }
 	    
-	 // http://localhost:8080/report/foodBranch?branchId=1&branchName=olala
+	    // http://localhost:8080/report/foodBranch?branchId=1&branchName=olala
 	    @RequestMapping(path = "/foodBranch", method = RequestMethod.GET)
 	    public ModelAndView foodBranch(@RequestParam("branchId") Integer branchId, @RequestParam("branchName") String branchName) {
 	        Map<String, Object> params = new HashMap<>();
@@ -84,5 +84,17 @@ public class ReportController {
 	        params.put("branchName", branchName);
 	        
 	        return new ModelAndView(View("FoodBranch"), params);
+	    }
+	    
+	    // http://localhost:8080/report/orderCustomer?accountId=3&accountName=olala
+	    @RequestMapping(path = "/orderCustomer", method = RequestMethod.GET)
+	    public ModelAndView orderCustomer(@RequestParam("accountId") Integer accountId, @RequestParam("accountName") String accountName) {
+	        Map<String, Object> params = new HashMap<>();
+	        params.put("datasource", dbsoruce);
+	        
+	        params.put("accountId", accountId);
+	        params.put("accountName", accountName);
+	        
+	        return new ModelAndView(View("OrderCustomer"), params);
 	    }
 }

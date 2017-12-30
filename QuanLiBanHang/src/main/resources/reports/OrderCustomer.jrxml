@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RevenueAll" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="50da06c0-1caf-40c9-a487-6676857a6a2c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="24"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="OrderCustomerByDay" uuid="0cc1d533-a0ca-49af-8b04-3a888957023d">
+		<parameter name="dsAccountId" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select date_trunc('day', to_timestamp(date_order, 'MM/DD/YYYY, hh:mi:ss')::timestamp without time zone) as date, count(product_order_id) as sum, sum(total_money) as total_money
+from product_order
+where account_id = $P{dsAccountId}
+GROUP BY date
+Order by date;]]>
+		</queryString>
+		<field name="date" class="java.sql.Timestamp"/>
+		<field name="sum" class="java.lang.Long"/>
+		<field name="total_money" class="java.lang.Long"/>
+	</subDataset>
+	<subDataset name="OrderCustomerByMonth" uuid="59f778f6-33c3-4eb1-b500-fcf353da83df">
+		<parameter name="dsAccountId" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select date_trunc('month', to_timestamp(date_order, 'MM/DD/YYYY, hh:mi:ss')::timestamp without time zone) as date, count(product_order_id) as sum, sum(total_money) as total_money
+from product_order
+where account_id = $P{dsAccountId}
+GROUP BY date
+Order by date;]]>
+		</queryString>
+		<field name="date" class="java.sql.Timestamp"/>
+		<field name="sum" class="java.lang.Long"/>
+		<field name="total_money" class="java.lang.Long"/>
+	</subDataset>
+	<parameter name="accountName" class="java.lang.String"/>
+	<parameter name="accountId" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[select 1]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement x="175" y="0" width="169" height="20" uuid="48b61d9a-9a4e-40d9-9929-42e37c7d9ac6"/>
+				<text><![CDATA[Count of order, total money by time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="88" height="20" uuid="733515cf-6fe9-4d6a-aa33-2527d089f211"/>
+				<text><![CDATA[Customer name:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="88" y="20" width="100" height="20" uuid="0bcd78a1-f936-43db-b165-95ac30bdec1d"/>
+				<textFieldExpression><![CDATA[$P{accountName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="411" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 8" style="table 8" x="0" y="116" width="287" height="99" uuid="886d6d8a-ac21-48d6-b78e-9eb2f79cc63b"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="OrderCustomerByDay" uuid="54ad866d-e649-42da-9c7c-09fba31028d7">
+						<datasetParameter name="dsAccountId">
+							<datasetParameterExpression><![CDATA[$P{accountId}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="97c123be-bfc4-4b24-93cd-f63a11738aa5">
+						<jr:columnHeader style="table 8_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="ee681d20-e939-4aa4-93a2-3902e6feba23"/>
+								<text><![CDATA[Date]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 8_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="674df5e8-4468-46fa-9c4c-3ac7206aeeaf"/>
+								<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="58" uuid="63ea6d2f-a883-4096-89f8-6a06368b176d">
+						<jr:columnHeader style="table 8_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="58" height="30" uuid="77f13320-b413-4891-bfad-e41c1e20999c"/>
+								<text><![CDATA[Count]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 8_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="58" height="20" uuid="2f99c440-0271-47d0-a0f4-9a534be7c65b"/>
+								<textFieldExpression><![CDATA[$F{sum}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="cbf5551e-9386-44db-a858-6a1dd296ffd6">
+						<jr:columnHeader style="table 8_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="8792c5fd-4ef0-43dd-84e7-d83283c9f410"/>
+								<text><![CDATA[Total money]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 8_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="c80b9f00-865b-4251-9ea5-31f74bede33c"/>
+								<textFieldExpression><![CDATA[$F{total_money}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="0" y="96" width="188" height="20" uuid="ae67fe71-550c-4068-9c2f-91d51b645b24"/>
+				<text><![CDATA[Count of order, total money by day]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="191" height="20" uuid="6bb2269e-0989-4d61-99e7-b3f0540cc3c1"/>
+				<text><![CDATA[Count of order, total money by month]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 9" style="table 9" x="0" y="20" width="287" height="76" uuid="fc480507-c722-453e-8b4a-ee51db8443c3"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="OrderCustomerByMonth" uuid="bae415f7-59f6-4560-9044-b5eb2ed12095">
+						<datasetParameter name="dsAccountId">
+							<datasetParameterExpression><![CDATA[$P{accountId}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="106" uuid="4c5fc0aa-fb3e-44d2-b48b-7d3997959d9f">
+						<jr:columnHeader style="table 9_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="106" height="30" uuid="e61d8c90-eb74-417a-87f1-ac8c19e17aeb"/>
+								<text><![CDATA[Month with start day]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 9_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="106" height="20" uuid="0b03dcb7-baeb-4d8c-b797-3774cf0e17c7"/>
+								<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="429173dd-0656-4043-938a-2103186d0359">
+						<jr:columnHeader style="table 9_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="dd7eaf4b-cdd2-4b32-81de-61bcb7e8ace8"/>
+								<text><![CDATA[Count]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 9_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="351f8fed-66e2-4b5a-a3e5-efdd449d6ead"/>
+								<textFieldExpression><![CDATA[$F{sum}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="296d331d-7202-4eff-bae6-799e8bb8f51f">
+						<jr:columnHeader style="table 9_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="163b01b3-910d-457c-acab-a6ea8cfb65c2"/>
+								<text><![CDATA[Total Money]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 9_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="732cd7e9-27a7-4c9a-b196-3bea1d0d5305"/>
+								<textFieldExpression><![CDATA[$F{total_money}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>
