@@ -29,6 +29,7 @@
 								<thead>
 									<th>Order Number</th>
 									<th>Date</th>
+									<th>Requester</th>
 									<th>Total Money</th>
 									<th>Phone</th>
 									<th>Address/Table</th>
@@ -38,10 +39,11 @@
 								</thead>
 								<tbody>
 									<tr ng-repeat="model in processingStatusModels  | orderBy:'self'">
-										<td ng-bind="model.self">Mohsin</td>
-										<td ng-bind="model.dateOrder">Mohsin</td>
-										<td ng-bind="model.totalMoney">Mohsin</td>
-										<td ng-bind="model.phone">0967032494</td>
+										<td ng-bind="model.self"></td>
+										<td ng-bind="model.dateOrder"></td>
+										<td ng-bind="model.account.realName"></td>
+										<td ng-bind="model.totalMoney"></td>
+										<td ng-bind="model.phone"></td>
 										<td ng-bind="model.address"></td>
 										<td>
 											  <button class="btn btn-primary btn-xs" data-title="Move" ng-click="setCurrentModel(model);currentModel.orderStatus='COOKING';put()">
@@ -84,6 +86,7 @@
 								<thead>
 									<th>Order Number</th>
 									<th>Date</th>
+									<th>Requester</th>
 									<th>Total Money</th>
 									<th>Phone</th>
 									<th>Address/Table</th>
@@ -93,10 +96,11 @@
 								</thead>
 								<tbody>
 									<tr ng-repeat="model in cookingStatusModels  | orderBy:'self'">
-										<td ng-bind="model.self">Mohsin</td>
-										<td ng-bind="model.dateOrder">Mohsin</td>
-										<td ng-bind="model.totalMoney">Mohsin</td>
-										<td ng-bind="model.phone">0967032494</td>
+										<td ng-bind="model.self"></td>
+										<td ng-bind="model.dateOrder"></td>
+										<td ng-bind="model.account.realName"></td>
+										<td ng-bind="model.totalMoney"></td>
+										<td ng-bind="model.phone"></td>
 										<td ng-bind="model.address"></td>
 										<td>
 											  <button class="btn btn-primary btn-xs" style="background-color: green;" data-title="Move" ng-click="setCurrentModel(model);currentModel.orderStatus='OLD';put()">

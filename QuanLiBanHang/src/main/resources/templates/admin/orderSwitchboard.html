@@ -29,6 +29,7 @@
 								<thead>
 									<th>Order Number</th>
 									<th>Date</th>
+									<th>Requester</th>
 									<th>Phone</th>
 									<th>Address</th>
 									<th>Branch</th>
@@ -39,6 +40,7 @@
 									<tr ng-repeat="model in newStatusModels  | orderBy:'self'">
 										<td ng-bind="model.self">Mohsin</td>
 										<td ng-bind="model.dateOrder"></td>
+										<td ng-bind="model.account.realName"></td>
 										<td ng-bind="model.phone"></td>
 										<td ng-bind="model.address"></td>
 										<td>
@@ -92,6 +94,7 @@
 								<thead>
 									<th>Order Number</th>
 									<th>Date</th>
+									<th>Requester</th>
 									<th>Phone</th>
 									<th>Address</th>
 									<th>Branch</th>
@@ -100,9 +103,10 @@
 								</thead>
 								<tbody>
 									<tr ng-repeat="model in processingStatusModels  | orderBy:'self'">
-										<td ng-bind="model.self">Mohsin</td>
-										<td ng-bind="model.dateOrder">Mohsin</td>
-										<td ng-bind="model.phone">0967032494</td>
+										<td ng-bind="model.self"></td>
+										<td ng-bind="model.dateOrder"></td>
+										<td ng-bind="model.account.realName"></td>
+										<td ng-bind="model.phone"></td>
 										<td ng-bind="model.address"></td>
 										<td ng-bind="model.branch.name">
 											
