@@ -32,6 +32,7 @@ public class ReportController {
 	        return view;
 	    }
 	    
+	    // http://localhost:8080/report/revenueAll
 	    @RequestMapping(path = "/revenueAll", method = RequestMethod.GET)
 	    public ModelAndView revenueAll() {
 	        Map<String, Object> params = new HashMap<>();
@@ -40,6 +41,7 @@ public class ReportController {
 	        return new ModelAndView(View("RevenueAll"), params);
 	    }
 	    
+	    // http://localhost:8080/report/revenueBranch?branchId=1&branchName=olala
 	    @RequestMapping(path = "/revenueBranch", method = RequestMethod.GET)
 	    public ModelAndView revenueBranch(@RequestParam("branchId") Integer branchId, @RequestParam("branchName") String branchName) {
 	        Map<String, Object> params = new HashMap<>();
@@ -49,5 +51,17 @@ public class ReportController {
 	        params.put("branchName", branchName);
 	        
 	        return new ModelAndView(View("RevenueBranch"), params);
+	    }
+	    
+	    // http://localhost:8080/report/orderBranch?branchId=1&branchName=olala
+	    @RequestMapping(path = "/orderBranch", method = RequestMethod.GET)
+	    public ModelAndView orderBranch(@RequestParam("branchId") Integer branchId, @RequestParam("branchName") String branchName) {
+	        Map<String, Object> params = new HashMap<>();
+	        params.put("datasource", dbsoruce);
+	        
+	        params.put("branchId", branchId);
+	        params.put("branchName", branchName);
+	        
+	        return new ModelAndView(View("OrderBranch"), params);
 	    }
 }

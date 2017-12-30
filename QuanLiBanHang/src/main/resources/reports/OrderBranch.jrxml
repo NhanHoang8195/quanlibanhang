@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RevenueAll" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="50da06c0-1caf-40c9-a487-6676857a6a2c">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="15"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -126,7 +126,7 @@
 	<subDataset name="RevenueAllByDay" uuid="0d7050e4-6c56-42c7-9c50-e843fce1736b">
 		<parameter name="dsBranchId" class="java.lang.Integer"/>
 		<queryString>
-			<![CDATA[select date_trunc('day', to_timestamp(date_order, 'MM/DD/YYYY, hh:mi:ss')::timestamp without time zone) as day,sum(total_money)
+			<![CDATA[select date_trunc('day', to_timestamp(date_order, 'MM/DD/YYYY, hh:mi:ss')::timestamp without time zone) as day,count(total_money) as sum
 from product_order
 where branch_id = $P{dsBranchId}
 GROUP BY day
@@ -140,7 +140,7 @@ Order by day;]]>
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[select date_trunc('week', to_timestamp(date_order, 'MM/DD/YYYY, hh:mi:ss')::timestamp without time zone) as week,sum(total_money)
+			<![CDATA[select date_trunc('week', to_timestamp(date_order, 'MM/DD/YYYY, hh:mi:ss')::timestamp without time zone) as week,count(total_money) as sum
 from product_order
 where branch_id = $P{dsBranchId}
 GROUP BY week
@@ -154,7 +154,7 @@ ORDER BY week;]]>
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[select date_trunc('quarter', to_timestamp(date_order, 'MM/DD/YYYY, hh:mi:ss')::timestamp without time zone) as quarter,sum(total_money)
+			<![CDATA[select date_trunc('quarter', to_timestamp(date_order, 'MM/DD/YYYY, hh:mi:ss')::timestamp without time zone) as quarter,count(total_money) as sum
 from product_order
 where branch_id = $P{dsBranchId}
 GROUP BY quarter;]]>
@@ -167,7 +167,7 @@ GROUP BY quarter;]]>
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[select date_trunc('year', to_timestamp(date_order, 'MM/DD/YYYY, hh:mi:ss')::timestamp without time zone) as date,sum(total_money)
+			<![CDATA[select date_trunc('year', to_timestamp(date_order, 'MM/DD/YYYY, hh:mi:ss')::timestamp without time zone) as date,count(total_money) as sum
 from product_order
 where branch_id = $P{dsBranchId}
 GROUP BY date
@@ -181,7 +181,7 @@ ORDER BY date;]]>
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[select date_trunc('month', to_timestamp(date_order, 'MM/DD/YYYY, hh:mi:ss')::timestamp without time zone) as date,sum(total_money)
+			<![CDATA[select date_trunc('month', to_timestamp(date_order, 'MM/DD/YYYY, hh:mi:ss')::timestamp without time zone) as date,count(total_money) as sum
 from product_order
 where branch_id = $P{branchId}
 GROUP BY date
@@ -202,7 +202,7 @@ Order BY date;]]>
 		<band height="49" splitType="Stretch">
 			<staticText>
 				<reportElement x="203" y="0" width="169" height="20" uuid="48b61d9a-9a4e-40d9-9929-42e37c7d9ac6"/>
-				<text><![CDATA[Branch revenue by time]]></text>
+				<text><![CDATA[Count of order by time]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="20" width="76" height="20" uuid="733515cf-6fe9-4d6a-aa33-2527d089f211"/>
@@ -247,7 +247,7 @@ Order BY date;]]>
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="90" height="30" uuid="7d3d0e91-0d39-4dc2-9174-15d0fdcb30cb"/>
-								<text><![CDATA[Revenue]]></text>
+								<text><![CDATA[Count]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
@@ -290,7 +290,7 @@ Order BY date;]]>
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="90" height="30" uuid="db2abd99-7057-498c-a36d-136aa05f2825"/>
-								<text><![CDATA[Revenue]]></text>
+								<text><![CDATA[Count]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
@@ -331,12 +331,12 @@ Order BY date;]]>
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="90" height="30" uuid="700f60bc-4360-4e76-b9b7-b47a858b0cc2"/>
-								<text><![CDATA[Revenue]]></text>
+								<text><![CDATA[Count]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="d0f30252-b00c-47a7-aadd-b374b880d8af"/>
+								<reportElement x="0" y="0" width="77" height="20" uuid="d0f30252-b00c-47a7-aadd-b374b880d8af"/>
 								<textFieldExpression><![CDATA[$F{sum}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -370,7 +370,7 @@ Order BY date;]]>
 						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="90" height="30" uuid="cc9559ee-0bb0-4fc5-9f25-78541d0101ed"/>
-								<text><![CDATA[Revenue]]></text>
+								<text><![CDATA[Count]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
@@ -421,7 +421,7 @@ Order BY date;]]>
 						<jr:columnHeader style="table 5_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="90" height="30" uuid="3724eda3-05ba-4b3c-8a61-1eee350dfb5e"/>
-								<text><![CDATA[Revenue]]></text>
+								<text><![CDATA[Count]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 5_TD" height="20" rowSpan="1">
