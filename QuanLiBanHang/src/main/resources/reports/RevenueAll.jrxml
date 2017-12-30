@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RevenueAll" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="50da06c0-1caf-40c9-a487-6676857a6a2c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="85"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="RevenueAllByDay" uuid="0d7050e4-6c56-42c7-9c50-e843fce1736b">
+		<queryString>
+			<![CDATA[select date_trunc('day', to_timestamp(date_order, 'MM/DD/YYYY, hh:mi:ss')::timestamp without time zone) as day,sum(total_money)
+from product_order
+GROUP BY day
+Order by day;]]>
+		</queryString>
+		<field name="day" class="java.sql.Timestamp"/>
+		<field name="sum" class="java.lang.Long"/>
+	</subDataset>
+	<subDataset name="RevenueAllByWeek" uuid="d5d2edfc-8e44-4507-98ce-99ca13aa3ad9">
+		<queryString>
+			<![CDATA[select date_trunc('week', to_timestamp(date_order, 'MM/DD/YYYY, hh:mi:ss')::timestamp without time zone) as week,sum(total_money)
+from product_order
+GROUP BY week
+ORDER BY week;]]>
+		</queryString>
+		<field name="week" class="java.sql.Timestamp"/>
+		<field name="sum" class="java.lang.Long"/>
+	</subDataset>
+	<subDataset name="RevenueAllByQuarter" uuid="d0ad4afc-91fa-40b9-b790-3df9ed5c3d0b">
+		<queryString language="SQL">
+			<![CDATA[select date_trunc('quarter', to_timestamp(date_order, 'MM/DD/YYYY, hh:mi:ss')::timestamp without time zone) as quarter,sum(total_money)
+from product_order
+GROUP BY quarter;]]>
+		</queryString>
+		<field name="quarter" class="java.sql.Timestamp"/>
+		<field name="sum" class="java.lang.Long"/>
+	</subDataset>
+	<subDataset name="RevenueAllByYear" uuid="7f1604b0-9fdc-4668-9206-43a3cb53eddc">
+		<queryString language="SQL">
+			<![CDATA[select date_trunc('year', to_timestamp(date_order, 'MM/DD/YYYY, hh:mi:ss')::timestamp without time zone) as date,sum(total_money)
+from product_order
+GROUP BY date
+ORDER BY date;]]>
+		</queryString>
+		<field name="date" class="java.sql.Timestamp"/>
+		<field name="sum" class="java.lang.Long"/>
+	</subDataset>
+	<queryString language="SQL">
+		<![CDATA[select 1]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="203" y="0" width="169" height="20" uuid="48b61d9a-9a4e-40d9-9929-42e37c7d9ac6"/>
+				<text><![CDATA[Revenue by time]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="358" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="36a5da73-27d8-45c7-8d06-509d57472919"/>
+				<text><![CDATA[Revenue by day]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 1" style="table 1" x="0" y="20" width="244" height="99" uuid="f02af6d9-1813-479d-8110-c60a039419ad"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="RevenueAllByDay" uuid="5f7a5fd7-7cf5-40cc-b4a0-9d2e1b591130">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="d182ce35-cf85-47cd-9e70-19c66b5ce8ba">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="49519ce4-daaa-4e4c-bad2-588f787b11aa"/>
+								<text><![CDATA[Day]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="5fc7aa06-d10e-4974-8746-8d055ae9b7b1"/>
+								<textFieldExpression><![CDATA[$F{day}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="3f333646-4f75-4d12-b0a6-cafd5c41cba8">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="7d3d0e91-0d39-4dc2-9174-15d0fdcb30cb"/>
+								<text><![CDATA[Revenue]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="3ee17cf8-58c1-46d9-bc98-3c30fda20801"/>
+								<textFieldExpression><![CDATA[$F{sum}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="244" y="0" width="100" height="20" uuid="cd253a92-11ac-4eef-aabc-8b9df52b9d68"/>
+				<text><![CDATA[Revenue by week]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 2" style="table 2" x="244" y="20" width="272" height="99" uuid="9a6fb4ec-fe29-4434-b68a-df8f92a4fcc2"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="RevenueAllByWeek" uuid="d8ae0c80-9593-4583-9ba3-89f5bd1c6d07">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="118" uuid="0fca3b90-0983-4d1a-a7ed-4637bdf4ce58">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="f706bb02-90f0-49f7-b389-3d6127e3c7db"/>
+								<text><![CDATA[Week with start day]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="d985c809-cd1e-499f-8611-a3e1d90862f0"/>
+								<textFieldExpression><![CDATA[$F{week}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="91881ba5-a4d3-44c5-92cc-82bc82a6711f">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="db2abd99-7057-498c-a36d-136aa05f2825"/>
+								<text><![CDATA[Revenue]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="c840c7e5-511f-4c66-9866-f085655f8af4"/>
+								<textFieldExpression><![CDATA[$F{sum}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="244" y="119" width="100" height="20" uuid="526c910a-0196-4773-bb10-d54a9021c9bc"/>
+				<text><![CDATA[Revenue by quarter]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 3" style="table 3" x="244" y="139" width="272" height="70" uuid="1e64bcb8-95e9-49a7-b018-ebbf62beb712"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="RevenueAllByQuarter" uuid="4e830450-a287-4f02-a6e8-edd2e7684d0d">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="117" uuid="e0960f43-a660-403b-b2f0-789497ee7b55">
+						<jr:tableFooter style="table 3_TH" height="0" rowSpan="1"/>
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="117" height="30" uuid="1ffa372e-b51d-423f-91ae-155230c1b704"/>
+								<text><![CDATA[Quarter with start day]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="117" height="20" uuid="69e0aed3-e97c-48c0-9b93-e052b512fb82"/>
+								<textFieldExpression><![CDATA[$F{quarter}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="b7da4460-f15e-42cd-ab15-198b9af624a6">
+						<jr:tableFooter style="table 3_TH" height="0" rowSpan="1"/>
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="700f60bc-4360-4e76-b9b7-b47a858b0cc2"/>
+								<text><![CDATA[Revenue]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="d0f30252-b00c-47a7-aadd-b374b880d8af"/>
+								<textFieldExpression><![CDATA[$F{sum}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table 4" style="table 4" x="244" y="229" width="272" height="117" uuid="f6682303-d6f1-49b7-b03e-aad0ab7604e4"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="RevenueAllByYear" uuid="73768122-6ab5-44aa-a871-41ce930715f7">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="99" uuid="6b8a5eca-7b8a-4ee7-8b06-4fbea32c28d0">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="5d6daf8a-62b2-43c5-96aa-39fc875716f0"/>
+								<text><![CDATA[Year with start day]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="af32791b-2754-4930-b2f8-96dba3825ef6"/>
+								<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="f9e2f518-a563-4ecc-b3d5-94558980b991">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="cc9559ee-0bb0-4fc5-9f25-78541d0101ed"/>
+								<text><![CDATA[Revenue]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="0ce689c9-af7c-4785-9baf-e2951f2808a5"/>
+								<textFieldExpression><![CDATA[$F{sum}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="244" y="209" width="100" height="20" uuid="4af7e5a4-016c-4b46-b801-bb07f983942e"/>
+				<text><![CDATA[Revenue by year.]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

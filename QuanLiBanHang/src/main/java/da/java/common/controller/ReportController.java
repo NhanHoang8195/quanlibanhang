@@ -1,0 +1,42 @@
+package da.java.common.controller;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView;
+
+
+@Controller
+@RequestMapping("report")
+public class ReportController {
+	 	@Autowired
+	    private DataSource dbsoruce;
+	    @Autowired
+	    private ApplicationContext appContext;
+	    
+	    public JasperReportsPdfView View(String name) {
+	    	JasperReportsPdfView view = new JasperReportsPdfView();
+	        view.setUrl("classpath:reports/" + name + ".jrxml");
+	        view.setReportDataKey("datasource");
+	        view.setApplicationContext(appContext);
+	        
+	        return view;
+	    }
+	    
+	    @RequestMapping(path = "/revenueAll", method = RequestMethod.GET)
+	    public ModelAndView revenueAll() {
+	        Map<String, Object> params = new HashMap<>();
+	        params.put("datasource", dbsoruce);
+	        
+	        return new ModelAndView(View("RevenueAll"), params);
+	    }
+	    
+}
