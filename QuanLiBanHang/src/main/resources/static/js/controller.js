@@ -37,6 +37,7 @@ app.controller('checkoutController', function($scope, $http) {
 	   $scope.findByEmail($("#authenticationEmail")[0].innerText, function(model){
 	    	console.log(model);
 	    	$scope.account = model;
+	    	account = $scope.account;
 	    });
     }
 });
@@ -53,5 +54,6 @@ function convertToOrder(cart){
 	}
 	order.orderStatus = "NEW";
 	order.totalMoney = cart.total;
+	order.account = account;
 	return order;
 }

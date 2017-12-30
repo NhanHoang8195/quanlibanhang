@@ -80,6 +80,7 @@ function defineBaseFunction(scope, http){
 			scope.get();
 		}
 	}, 5000);
+	// Account
 	var email = $("#authenticationEmail")[0];
     if(email != undefined){
 	   scope.findByEmail($("#authenticationEmail")[0].innerText, function(model){
@@ -87,6 +88,13 @@ function defineBaseFunction(scope, http){
 	    	scope.account = model;
 	    });
     }
+	scope.waitAccountLoad = function() {
+		while(scope.account.branch == undefined){}
+	}
+	scope.sleep = function(delay) {
+        var start = new Date().getTime();
+        while (new Date().getTime() < start + delay);
+     }
 }
 app.controller('foodController', function($scope, $http) {
 	var scope = $scope; var http = $http;
@@ -253,6 +261,7 @@ app.controller('orderSwitchboardController', function($scope, $http) {
 	scope.beforePost = function(model){
 		model.orderStatus = 'NEW';
 		model.dateOrder = new Date().toLocaleString();
+		model.account = scope.account;
 	};
 	
 	scope.get("branches", function(data){
@@ -273,9 +282,17 @@ app.controller('orderBranchController', function($scope, $http) {
 	scope.get();
 	scope.afterGet = function(models){
 		scope.processingStatusModels = scope.models.filter(function(item) {
+			if(item.branch == undefined){
+				return false;
+			}
+			
 			return item.orderStatus=="PROCESSING" && item.branch.name == scope.account.branch.name;
 		});
 		scope.cookingStatusModels = scope.models.filter(function(item) {
+			if(item.branch == undefined){
+				return false;
+			}
+			
 			return item.orderStatus=="COOKING" && item.branch.name == scope.account.branch.name;
 		});
 		baseOrder(scope);
@@ -283,6 +300,7 @@ app.controller('orderBranchController', function($scope, $http) {
 	scope.beforePost = function(model){
 		model.orderStatus = 'PROCESSING';
 		model.dateOrder = new Date().toLocaleString();
+		model.account = scope.account;
 	};
 	
 	scope.get("branches", function(data){
@@ -292,6 +310,7 @@ app.controller('orderBranchController', function($scope, $http) {
 		scope.foods = data;
 	});
 });
+
 function baseOrder(scope){
 	scope.$watch('foods', function() {
 		scope.filteredFoods = scope.foods;
