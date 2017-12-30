@@ -138,6 +138,14 @@ public class Account implements Serializable {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+    
+    public List<Order> getOrder() {
+        return orders;
+    }
+
+    public void setOrder(List<Order> order) {
+        this.orders = order;
+    }
 
     public Account(Long accountId, String email, String password, String phone, String address, String realName,
             Set<Role> roles) {
