@@ -46,7 +46,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
         http
             .csrf().csrfTokenRepository(csrfTokenRepository()).and()
             .authorizeRequests()
-                .antMatchers("/about").authenticated()
+                .antMatchers("/order/").authenticated()
                 .antMatchers("/account").authenticated()
                 .antMatchers("/checkout/").authenticated()
                 .antMatchers("/admin/**").hasAnyRole("ADMIN", "SWITCHBOARD", "BRANCH")
