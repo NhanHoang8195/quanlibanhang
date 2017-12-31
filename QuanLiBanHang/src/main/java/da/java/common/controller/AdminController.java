@@ -55,6 +55,10 @@ public class AdminController {
     public String orderBranch(Model model) {
 		return "admin/orderBranch";
     }
+	@GetMapping("/admin/report")
+    public String report(Model model) {
+		return "admin/report";
+    }
 	
 	@PutMapping("/admin/updatePassword")
     public ResponseEntity<?> updatePassword(@RequestBody Map<String, String> json) {

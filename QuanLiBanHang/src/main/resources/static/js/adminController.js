@@ -352,3 +352,28 @@ function baseOrder(scope){
     }, true);
 }
 
+app.controller('reportController', function($scope, $http) {
+	var scope = $scope; var http = $http;
+	scope.name = "reports";
+	scope.singularName = "report";
+	
+	defineBaseFunction(scope, http);
+	
+	scope.revenueBranchModel = {};
+	scope.orderBranchModel = {};
+	scope.foodBranchModel = {};
+	scope.orderCustomerModel = {};
+	
+	scope.get("branches", function(data){
+		scope.branches = data;
+		scope.revenueBranchModel.branch = scope.branches[0];
+		scope.orderBranchModel.branch = scope.branches[0];
+		scope.foodBranchModel.branch = scope.branches[0];
+	});	
+	scope.get("accounts", function(data){
+		scope.accounts = data.filter(function(item) {return item.roles[0].roleName =="ROLE_MEMBER"});
+		scope.orderCustomerModel.account = scope.accounts[0];
+	});	
+});
+
+

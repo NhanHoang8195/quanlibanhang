@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/layout :: head"></head>
+<body>
+	<div id="wrapper" ng-app="myApp" ng-controller="reportController">
+		<nav th:replace="admin/layout :: navigation"></nav>
+		
+		<div id="page-wrapper">
+			<div class="container-fluid">
+				<!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Report <small> Overview</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-dashboard"></i> Dashboard
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3" style="
+									    font-size: 4em;
+									">
+                                        <i class="fa fa-money"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">All</div>
+                                        <div>Revenue All</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="/report/revenueAll" target="_blank">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3" style="
+										    font-size: 4em;
+										">
+                                        <i class="fa fa-money"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="dropdown huge">
+										  <button class="btn btn-primary dropdown-toggle" style="margin-right: -12px;" type="button" data-toggle="dropdown">
+										  			{{revenueBranchModel.branch.name}}
+										  <span class="caret"></span></button>
+										  <ul class="dropdown-menu">
+										    <li ng-repeat="branch in branches" ng-click="revenueBranchModel.branch = branch">
+										    	<a style="cursor: pointer;">{{branch.name}}</a>
+										    </li>
+										  </ul>
+										</div>
+                                        <div>Revenue By Branch</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a target="_blank" href="/report/revenueBranch?branchId={{revenueBranchModel.branch.self}}&amp;branchName={{revenueBranchModel.branch.name}}">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-shopping-cart fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="dropdown huge">
+										  <button class="btn btn-primary dropdown-toggle" style="margin-right: -12px;" type="button" data-toggle="dropdown">
+										  			{{orderBranchModel.branch.name}}
+										  <span class="caret"></span></button>
+										  <ul class="dropdown-menu">
+										    <li ng-repeat="branch in branches" ng-click="orderBranchModel.branch = branch">
+										    	<a style="cursor: pointer;">{{branch.name}}</a>
+										    </li>
+										  </ul>
+										</div>
+                                        <div>Count of order</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a target="_blank" href="/report/orderBranch?branchId={{orderBranchModel.branch.self}}&amp;branchName={{orderBranchModel.branch.name}}">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                       <i class="fa fa-fw fa-beer fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">All</div>
+                                        <div>Count of food</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a target="_blank" href="/report/foodAll">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                	<div class="col-lg-3 col-md-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                       <i class="fa fa-fw fa-beer fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="dropdown huge">
+										  <button class="btn btn-primary dropdown-toggle" style="margin-right: -12px;" type="button" data-toggle="dropdown">
+										  			{{foodBranchModel.branch.name}}
+										  <span class="caret"></span></button>
+										  <ul class="dropdown-menu">
+										    <li ng-repeat="branch in branches" ng-click="foodBranchModel.branch = branch">
+										    	<a style="cursor: pointer;">{{branch.name}}</a>
+										    </li>
+										  </ul>
+										</div>
+                                        <div>Count of food</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a target="_blank" href="/report/foodBranch?branchId={{foodBranchModel.branch.self}}&amp;branchName={{foodBranchModel.branch.name}}">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                     <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-shopping-cart fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="dropdown huge">
+										  <button class="btn btn-primary dropdown-toggle" style="margin-right: -12px;" type="button" data-toggle="dropdown">
+										  			{{orderCustomerModel.account.realName}}
+										  <span class="caret"></span></button>
+										  <ul class="dropdown-menu">
+										    <li ng-repeat="account in accounts" ng-click="orderCustomerModel.account = account">
+										    	<a style="cursor: pointer;">{{account.realName}}</a>
+										    </li>
+										  </ul>
+										</div>
+                                        <div>Count of order</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a target="_blank" href="/report/orderCustomer?accountId={{orderCustomerModel.account.self}}&amp;accountName={{orderCustomerModel.account.realName}}">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
