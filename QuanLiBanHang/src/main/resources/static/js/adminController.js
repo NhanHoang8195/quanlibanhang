@@ -300,7 +300,7 @@ app.controller('orderBranchController', function($scope, $http) {
 	scope.beforePost = function(model){
 		model.orderStatus = 'PROCESSING';
 		model.dateOrder = new Date().toLocaleString();
-		model.account = scope.account;
+		model.branch = scope.account.branch;
 	};
 	
 	scope.get("branches", function(data){
